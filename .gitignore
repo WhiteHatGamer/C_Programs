@@ -1,3 +1,8 @@
+#myown
+.vscode/
+launch.json.txt
+tasks.json.txt
+
 # Prerequisites
 *.d
 
