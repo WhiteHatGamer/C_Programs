@@ -1,19 +1,38 @@
-#include <stdio.h>
-#include <conio.h>
-#include <stdbool.h>
+/*// C program to demonstrate setdate() method
 
-void main(void) {
-    while(true)
+#include <dos.h>
+#include <time.h>
+*/
+#include <stdio.h>
+/*
+int main()
+{
+	//struct date *dt = getdate(&dt);
+    time_t _time = time(NULL);
+    struct tm Today = *localtime(&_time);
+    printf("\nThis program has been written at (date and time): %d \nmday= %d\nwday %d\nyday %d ", Today.tm_year+1900,Today.tm_mday,Today.tm_wday,Today.tm_yday);
+	
+	return 0;
+}
+*/
+
+/*#include <time.h>
+
+struct timeval stop, start;
+gettimeofday(&start, NULL);
+//do stuff
+gettimeofday(&stop, NULL);
+printf("took %lu us\n", (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec); */
+
+
+int main()
+{
+    float n;
+    int num[10]={0},i;
+    for(i=0;i<10;i++)
     {
-        int a[5];
-        int i, n;
-        for(i=0;i<5;i++)
-        {
-            printf("%lf\n",scanf("%d",&a[i]));
-            break;
-        }
-        n = i;
-        for(i=0;i<n;i++)
-            printf("%d\n",a[i]);
+        printf("Enter Numbers: ");
+        scanf("%f", &n);
+        num[i]=n;
     }
 }
