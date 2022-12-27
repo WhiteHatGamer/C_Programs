@@ -25,7 +25,7 @@ gettimeofday(&stop, NULL);
 printf("took %lu us\n", (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec); */
 
 
-int main()
+/*int main()
 {
     float n;
     int num[10]={0},i;
@@ -35,4 +35,20 @@ int main()
         scanf("%f", &n);
         num[i]=n;
     }
+}*/
+
+#include <string.h>
+#include <stdio.h>
+
+int main()
+{
+    char s[10];
+    char temp[10];
+    scanf("%s %s",s,temp);
+    if(strcmp(&s[0],&temp[0]) == 0)
+    {
+        printf("Same");
+        return 0;
+    }
+    return 1;
 }
