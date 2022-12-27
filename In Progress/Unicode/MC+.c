@@ -12,6 +12,8 @@ Code, Compile, Run and Debug online from anywhere in world.
 #include <string.h>
 #include <stdlib.h>
 
+//BEWARE IAM USING GETS..ME MYSELF DON'T RECOMMEND USING THIS
+
 //Prototyping
 void shitf(char *k,int *index, int *end);
 const int MAXIMUM_LENGTH = 150 * 1.5;
