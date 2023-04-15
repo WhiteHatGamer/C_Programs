@@ -4,6 +4,7 @@
 #include <time.h>
 */
 #include <stdio.h>
+#include <stdlib.h>
 /*
 int main()
 {
@@ -37,18 +38,119 @@ printf("took %lu us\n", (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - 
     }
 }*/
 
-#include <string.h>
-#include <stdio.h>
+//#include <string.h>
+//#include <stdio.h>
+//
+//int main()
+//{
+//    char s[10];
+//    char temp[10];
+//    scanf("%s %s",s,temp);
+//    if(strcmp(&s[0],&temp[0]) == 0)
+//    {
+//        printf("Same");
+//        return 0;
+//    }
+//    return 1;
+//}
+#define pass (void)0
+enum Bool {false, true};
+enum Bool Direction = false;
 
-int main()
+void swaplok(int *x,int *y);
+int HEIGHT=768,WIDTH = 1024;
+
+void main()
 {
-    char s[10];
-    char temp[10];
-    scanf("%s %s",s,temp);
-    if(strcmp(&s[0],&temp[0]) == 0)
+    int a = 512,b=380;
+    printf("Ball position before: %d %d\n",a,b);
+    swaplok(&a,&b);//&firstFlag,
+    printf("Ball position AFTER: %d %d\n",a,b);
+    scanf("%d",&a);
+    return;
+}
+
+// Updates tthe position of the ball to new random value
+void swaplok(int *xpos,int *ypos)//enum Bool *firstFlag,
+{
+    int randomNo = (rand() % 3);
+    //firstFlag? (Direction = rand()%2)&&(firstFlag = false) : pass;
+    if(Direction)
     {
-        printf("Same");
-        return 0;
+        if (randomNo == 0)
+        {
+            if(*xpos<0)
+            {
+                Direction = false;
+            }
+            else
+            {
+                *xpos-=100;
+            }
+        }
+        else if(randomNo == 1)
+        {
+            if(*xpos<0)
+            {
+                Direction = false;
+            }
+            else
+            {
+                *xpos-=100;
+            }
+            (*ypos>HEIGHT)? pass : (*(ypos)+=100);
+        }
+        else
+        {
+            if(*xpos<0)
+            {
+                Direction = false;
+            }
+            else
+            {
+                *xpos-=100;
+            }
+            (*ypos<0)? pass : (*(ypos)-=100);
+        }
     }
-    return 1;
+    else
+    {
+        if (randomNo == 0)
+        {
+            if(*xpos>WIDTH)
+            {
+                Direction = true;
+            }
+            else
+            {
+                *xpos+=100;
+            }
+        }
+        else if(randomNo == 1)
+        {
+            if(*xpos>WIDTH)
+            {
+                Direction = true;
+            }
+            else
+            {
+                *xpos+=100;
+            }
+            (*ypos>HEIGHT)? pass : (*(ypos)+=100);
+        }
+        else
+        {
+            if(*xpos>WIDTH)
+            {
+                Direction = true;
+            }
+            else
+            {
+                *xpos+=100;
+            }
+            (*ypos<0)? pass : (*(ypos)-=100);
+        }
+    }
+    printf("Ball position changed to %d %d\n",*xpos,*ypos);
+    return;
 }

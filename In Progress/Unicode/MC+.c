@@ -90,4 +90,3 @@ void shitf(char *k,int *index, int *end)
     *index += 3;
     *end += 3;
 }
-

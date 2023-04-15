@@ -1,0 +1,4 @@
+So when doing exp with pointers:
+in function when using with ternary operator and complicated expressions:
+*y++ != *(y)++
+to increase value you have to give bracket before variable name and pointer operator;
