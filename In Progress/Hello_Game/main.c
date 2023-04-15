@@ -102,7 +102,7 @@ int main(int argc,char *argv[])
         SDL_Delay(5); //delay is important to not overload CPU
     }
     
-    exitLoop:
+    //exitLoop:
     //SDL_GL_SwapWindow(window);
     if(window)
     {
