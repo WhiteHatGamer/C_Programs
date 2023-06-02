@@ -53,7 +53,7 @@ printf("took %lu us\n", (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - 
 //    }
 //    return 1;
 //}
-#define pass (void)0
+/*#define pass (void)0
 enum Bool {false, true};
 enum Bool Direction = false;
 
@@ -154,3 +154,4 @@ void swaplok(int *xpos,int *ypos)//enum Bool *firstFlag,
     printf("Ball position changed to %d %d\n",*xpos,*ypos);
     return;
 }
+*/
