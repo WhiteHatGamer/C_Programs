@@ -23,7 +23,7 @@ void main()
     struct tm Today = *localtime(&_time);
     bool isProgrammingFun = true;
     bool isFishTasty = false;
-    int M,x,y,z;//EDclared an inteeger value
+    int M,x,y,z;//EDeclared an integer value
     int j=0;
     int age;//to be found
     float decimal=10.12;//declared a decimal value
@@ -38,9 +38,9 @@ void main()
     M+=50;//add 50with the value of m
     printf("Hello\tWorld\t!\n");// \t is for tab space
     printf("I\tam\tLearning\tC\n"); //\n Is for new line
-    printf("\"And\tit\tis\t\tAwesome\"");/*the commenta can be two lines
-                                           And still Rum Code without excecutibnf comments*/
-    printf ("\nman =%d\ndeciaml=%f\nCharacter = %c\nString = %s",(M+x+y+z),decimal,string,Strings);
+    printf("\"And\tit\tis\t\tAwesome\"");/*the comment can be two lines
+                                           And still Rum Code without execution comments*/
+    printf ("\nman =%d\ndecimal=%f\nCharacter = %c\nString = %s",(M+x+y+z),decimal,string,Strings);
     printf("\nValue of pi =\t%f\nEarth's Gravity =\t%f",PI,GRAVITY);
     printf("\n%d\t%d",true,(5>3));
     printf("\nSize of strings is %lu",sizeof(Strings));
