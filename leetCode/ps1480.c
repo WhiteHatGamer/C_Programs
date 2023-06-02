@@ -13,7 +13,11 @@ int* runningSum(int* nums, int numsSize, int* returnSize){
     }
     *returnSize = numsSize;
     return (toReturn);
+    // time complexity = O(n)
+    // space complexity = O(1) Since we are not creating any extra variables other than input and output
+    // we can also solve this by updating the input array but not a good standard   
 }
+
 
 void main()
 {
