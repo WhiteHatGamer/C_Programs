@@ -5,6 +5,8 @@
 #include <stdbool.h> //for boolean operations
 #include <Windows.h>//for color and system
 
+#define pass (void)0
+
 const float PI=3.1415929,GRAVITY=9.80665;
 const int BIRTHYEAR = 1999;//struct date dt;
 const char hexalpha[16] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
@@ -140,3 +142,51 @@ void printout(int x)
         printf("\nHello Look Here");
     }
 }
+
+// Learning OOP in C
+typedef struct People {
+    char* name;
+    int age;
+    // Function to set Name and Age of Person of People
+    void (*set)(People_t *, int, char*);
+    // Function to get Name of Person of People
+    char* (*get)(People_t *);
+}People_t;
+
+// Function to set Name and Age of Person of People
+void SetPerson(People_t* This, int _age, char* _name) {
+    This->age = _age;
+    This->name = _name;
+}
+
+// Function to get Name of Person of People
+char* GetPerson(People_t* This) {
+    return This->name;
+}
+
+int StructMain() {
+    People_t Person1;
+    Person1.set = SetPerson;
+    Person1.get = GetPerson;
+    Person1.set(&Person1, 18, "Muhammed");
+    printf("%s", Person1.get(&Person1));
+    return 0;
+}
+
+//The Encapsulation
+//Modulation
+//Abstarction
+//Polymorphisn
+//Method Passing
+//
+//While Implemetntinh the concets in C
+// The Main Thing To Is the Malloc, Realloc,Calloc, Free
+//
+//
+//
+//
+//
+//
+//
+//
+//
