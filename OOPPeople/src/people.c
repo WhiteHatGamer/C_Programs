@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "people.h"
+#include "../include/people.h"
 
 // Function to create a new Person
 people_t* createPerson(const char* _name, int _age){
@@ -38,11 +38,11 @@ void setPersonAge(people_t* This, int _age){
 }
 
 // Function to get the name of a Person
-const char* getPersonName(people_t* This){
+const char* getPersonName(const people_t* This){
     return This->name;
 }
 
 // Function to get the age of a Person
-int getPersonAge(people_t* This){
+int getPersonAge(const people_t* This){
     return This->age;
 }
