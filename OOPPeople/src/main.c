@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "people.h"
+#include "../include/people.h"
 
 int main(){
     //Creating a new Person
@@ -11,7 +11,7 @@ int main(){
     setPersonName(Home[0], "Muhammed M");
 
     //Getting the name and age of peoples at home
-    printf("Name : %s", Home[0]->name);
+    printf("Name : %s\n", Home[0]->name);
     printf("Age : %d", Home[0]->age);
 
     //Delete the person and free the memory
