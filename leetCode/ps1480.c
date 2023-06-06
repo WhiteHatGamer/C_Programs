@@ -1,5 +1,6 @@
-#include <stdio.h>
 //1480. Running Sum of 1d Array
+
+#include <stdio.h>
 
 /**
  * Note: The returned array must be malloced, assume caller calls free().
