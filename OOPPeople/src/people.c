@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../include/people.h"
+#include "people.h"
 
 // Function to create a new Person
 people_t* createPerson(const char* _name, int _age){

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../include/people.h"
+#include "people.h"
 
 int main(){
     //Creating a new Person
