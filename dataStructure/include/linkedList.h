@@ -10,7 +10,7 @@ typedef struct LinkedList{
 void PrintList(linkedlist_t* _head);
 
 //TODO: Create New Node
-linkedlist_t* createNode(linkedlist_t** _head, int _data);
+linkedlist_t* createNode(int _data);
 
 //TODO: Insert at head
 

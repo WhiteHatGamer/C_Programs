@@ -13,12 +13,12 @@ void PrintList(linkedlist_t* _head){
     printf("\n");
 }
 //TODO: Create New Node
-linkedlist_t* createNode(linkedlist_t** _head, int _data){
+linkedlist_t* createNode(int _data){
     linkedlist_t* result = (linkedlist_t*)malloc(sizeof(linkedlist_t));
+    linkedlist_t** tmp;
     if (result != NULL){
         result->data = _data;
         result->next = NULL;
-        *_head = result;
     }
     return result;
 }
