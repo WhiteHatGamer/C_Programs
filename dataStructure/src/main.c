@@ -2,19 +2,19 @@
 #include "linkedList.h"
 
 int main(){
-    linkedlist_t l1, l2, l3;
     linkedlist_t* Head;
+    linkedlist_t* tmp;
 
     // Create New Node
-    l1.data = 1;
-    l2.data = 2;
-    l3.data = 3;
-    Head = &l1;
-    l1.next = &l2;
-    l2.next = &l3;
-    l3.next = NULL;
+    tmp = createNode(1);
+    Head = tmp;
+    tmp = createNode(2);
+    tmp->next = Head;
+    Head = tmp;
+    tmp = createNode(3);
+    tmp->next = Head;
+    Head = tmp;
 
-    
     PrintList(Head);
 
     // Inserting in the beginning/somewhere
