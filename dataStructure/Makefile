@@ -19,6 +19,9 @@ $(BIN): $(OBJS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+run:
+	$(BIN).exe
+
 clean:
 	del /Q $(OBJ_DIR)\*
 	del /Q $(BIN_DIR)\*
