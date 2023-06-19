@@ -6,22 +6,23 @@ typedef struct LinkedList{
     struct LinkedList* next;
 }linkedlist_t;
 
-//Display List
+// Display List
 void PrintList(linkedlist_t* _head);
 
-//Create New Node
+// Create New Node
 linkedlist_t* createNode(int _data);
 
-//Delete a Node From Head
+// Delete a Node From Head
 void deleteHead(linkedlist_t** _head);
 
 //TODO: Insert at head
+linkedlist_t* insertHead(linkedlist_t* _head, int _data);
 
 //TODO: Find Node
 
 //TODO: Update Node
 
-//Free Memory
+// Free Memory
 void freeLinkedList(linkedlist_t* _head);
 
 #endif
