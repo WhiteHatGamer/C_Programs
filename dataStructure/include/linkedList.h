@@ -18,9 +18,17 @@ void deleteHead(linkedlist_t** _head);
 //TODO: Insert at head
 linkedlist_t* insertHead(linkedlist_t* _head, int _data);
 
-//TODO: Find Node
+//TODO: Insert at End -> linkedlist_t
 
-//TODO: Update Node
+//TODO: Insert at Index -> linkedlist_t
+
+//TODO: Find Node by value -> bool
+
+//TODO: Update Node -> void
+
+//TODO: Sorting List -> linkedlist_t
+
+//TODO: Merge Linked List -> linkedlist_t
 
 // Free Memory
 void freeLinkedList(linkedlist_t* _head);
