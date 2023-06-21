@@ -3,13 +3,9 @@
 #include "linkedList.h"
 
 int main(){
-    linkedlist_t* Head = NULL;
-    linkedlist_t* tmp;
-
     // Create New Node
-    tmp = createNode(999);
-    tmp->next = Head;
-    Head = tmp;
+    linkedlist_t* tmp = createNode(999);
+    linkedlist_t* Head = tmp;
     for (int i = 0; i < 15; i++)
     {
         tmp = createNode(i);
