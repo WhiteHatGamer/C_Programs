@@ -6,6 +6,8 @@ typedef struct LinkedList{
     struct LinkedList* next;
 }linkedlist_t;
 
+typedef enum { false, true } bool;
+
 // Display List
 void PrintList(linkedlist_t* _head);
 
@@ -15,22 +17,28 @@ linkedlist_t* createNode(int _data);
 // Delete a Node From Head
 void deleteHead(linkedlist_t** _head);
 
-//TODO: Insert at head
+// Delete a node by value
+void deleteNode(linkedlist_t* _head, int _data);
+
+// Insert at head
 linkedlist_t* insertHead(linkedlist_t* _head, int _data);
 
-//TODO: Insert at End -> linkedlist_t
+// Insert at End -> linkedlist_t
+linkedlist_t* insertEnd(linkedlist_t* _head, int _data);
 
-//TODO: Insert at Index -> linkedlist_t
+// Insert at Index -> linkedlist_t
+linkedlist_t* insertIndex(linkedlist_t* _head, int index, int _data);
 
-//TODO: Find Node by value -> bool
+// Find Node by value -> bool
+bool findNode(linkedlist_t* _head, int _data);
 
-//TODO: Update Node -> void
+// Update Node -> int
+int updateNode(linkedlist_t* _head, int _data, int _newData);
 
-//TODO: Sorting List -> linkedlist_t
-
-//TODO: Merge Linked List -> linkedlist_t
+// Merge Linked List -> linkedlist_t
+linkedlist_t* mergeList(linkedlist_t* _head1, linkedlist_t* _head2);
 
 // Free Memory
 void freeLinkedList(linkedlist_t* _head);
 
-#endif 
+#endif
