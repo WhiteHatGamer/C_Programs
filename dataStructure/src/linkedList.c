@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "linkedList.h"
 
-//TODO: Display List
+// Display List\Traversal
 void PrintList(linkedlist_t* _head){
     linkedlist_t *tmp = _head;
 
@@ -13,7 +13,7 @@ void PrintList(linkedlist_t* _head){
     printf("\n");
 }
 
-//TODO: Create New Node
+// Create New Node
 linkedlist_t* createNode(int _data){
     linkedlist_t* result = (linkedlist_t*)malloc(sizeof(linkedlist_t));
     if (result != NULL){
@@ -23,16 +23,7 @@ linkedlist_t* createNode(int _data){
     return result;
 }
 
-//TODO: Insert at head
-linkedlist_t* insertHead(linkedlist_t* _head, int _data){
-    linkedlist_t* tmp = (linkedlist_t*)malloc(sizeof(linkedlist_t));
-    tmp->data = _data;
-    tmp->next = _head;
-    _head = tmp;
-    return tmp;
-}
-
-//Delete a nodfe from the beginning
+// Delete a node from the beginning
 void deleteHead(linkedlist_t** _head){
     if(*_head != NULL){
         linkedlist_t* tmp = *_head;
@@ -40,10 +31,102 @@ void deleteHead(linkedlist_t** _head){
         free(tmp);
     }
 }
-//TODO: Find Node
-//TODO: Update Node
 
-//TODO: IMP: Delete/Free Memory
+// Delete a node by Value
+void deleteNode(linkedlist_t* _head, int _data){
+    if (findNode(&_head, _data)){
+        linkedlist_t* tmp = _head;
+        while(tmp!=NULL){
+            if (tmp->data == _data)
+            {
+                deleteHead(&tmp);
+                return;
+            }
+            tmp = tmp->next;
+        }
+    }
+    return;
+}
+
+// Insert at head
+linkedlist_t* insertHead(linkedlist_t* _head, int _data){
+    linkedlist_t* tmp = createNode(_data);
+    tmp->next = _head;
+    _head = tmp;
+    return tmp;
+}
+
+// Insert at end
+linkedlist_t* insertEnd(linkedlist_t* _head, int _data){
+    linkedlist_t* tmp = _head;
+    while (tmp->next != NULL)
+    {
+        tmp = tmp->next;
+    }
+    tmp->next = createNode(_data);
+}
+
+// Insert a Node at an Index
+linkedlist_t* insertIndex(linkedlist_t* _head, int index, int _data){
+    linkedlist_t* tmp = _head;
+    int current = 0;
+    if (index<0){
+        printf("Negative Indexing not yet supported");
+        return;
+    }
+    while (current < index)
+    {
+        if (tmp == NULL){
+            printf("Index Out of Bound...\n");
+            return;
+        }
+        current++;
+        tmp = tmp->next;
+    }
+    tmp = createNode(_data);
+    return;
+}
+
+// Find a Node
+bool findNode(linkedlist_t* _head, int _data){
+    linkedlist_t *tmp = _head;
+
+    while (tmp != NULL)
+    {
+        if(tmp->data == _data){
+            return true;
+        }
+        tmp = tmp->next;
+    }
+    return false;
+}
+
+// Update a Node
+int updateNode(linkedlist_t* _head, int _data, int _newData){
+    linkedlist_t* tmp = _head;
+    while (tmp != NULL)
+    {
+        if (tmp->data == _data){
+            tmp->data = _newData;
+            return 1;
+        }
+        tmp=tmp->next;
+    }
+    return 0;
+}
+
+// Merge two Linked List
+linkedlist_t* mergeList(linkedlist_t* _head1, linkedlist_t* _head2){
+    linkedlist_t* tmp = _head1;
+    while (tmp != NULL)
+    {
+        tmp = tmp->next;
+    }
+    tmp = _head2;
+    return _head1;
+}
+
+// Delete/Free Memory
 void freeLinkedList(linkedlist_t* _head){
     linkedlist_t* current = _head;
     linkedlist_t* next;
