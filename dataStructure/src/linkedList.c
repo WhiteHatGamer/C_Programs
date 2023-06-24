@@ -34,10 +34,10 @@ void deleteHead(linkedlist_t** _head){
 
 // Delete a node by Value
 void deleteNode(linkedlist_t* _head, int _data){
-    if (findNode(&_head, _data)){
+    if (findNode(_head, _data)){
         linkedlist_t* tmp = _head;
         while(tmp!=NULL){
-            if (tmp->data == _data)
+            if ((tmp->next)->data == _data)
             {
                 deleteHead(&tmp);
                 return;
@@ -57,17 +57,18 @@ linkedlist_t* insertHead(linkedlist_t* _head, int _data){
 }
 
 // Insert at end
-linkedlist_t* insertEnd(linkedlist_t* _head, int _data){
+void insertEnd(linkedlist_t* _head, int _data){
     linkedlist_t* tmp = _head;
-    while (tmp->next != NULL)
+    while ((tmp->next) != NULL)
     {
         tmp = tmp->next;
     }
     tmp->next = createNode(_data);
+    return;
 }
 
 // Insert a Node at an Index
-linkedlist_t* insertIndex(linkedlist_t* _head, int index, int _data){
+void insertIndex(linkedlist_t* _head, int _data, int index){
     linkedlist_t* tmp = _head;
     int current = 0;
     if (index<0){
@@ -136,4 +137,5 @@ void freeLinkedList(linkedlist_t* _head){
         free(current);
         current = next;
     }
+    printf("Linked List Freed");
 }

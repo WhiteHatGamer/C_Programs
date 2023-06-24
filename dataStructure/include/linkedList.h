@@ -24,10 +24,10 @@ void deleteNode(linkedlist_t* _head, int _data);
 linkedlist_t* insertHead(linkedlist_t* _head, int _data);
 
 // Insert at End -> linkedlist_t
-linkedlist_t* insertEnd(linkedlist_t* _head, int _data);
+void insertEnd(linkedlist_t* _head, int _data);
 
 // Insert at Index -> linkedlist_t
-linkedlist_t* insertIndex(linkedlist_t* _head, int index, int _data);
+void insertIndex(linkedlist_t* _head, int _data, int index);
 
 // Find Node by value -> bool
 bool findNode(linkedlist_t* _head, int _data);
