@@ -139,5 +139,4 @@ void freeLinkedList(linkedlist_t* _head){
         free(current);
         current = next;
     }
-    printf("Linked List Freed");
 }
