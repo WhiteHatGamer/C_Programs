@@ -42,10 +42,10 @@ int main(){
     insertIndex(Head, 9999, 5);
     printf("\nInserindex");
     PrintList(Head);
-//
-    //updateNode(Head, 25, 250);
-    //printf("\nInsertHead");
-    //PrintList(Head);
+
+    updateNode(Head, 9999, 999);
+    printf("\nInsertHead");
+    PrintList(Head);
 
     freeLinkedList(Head);
 
