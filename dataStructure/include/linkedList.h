@@ -26,7 +26,7 @@ linkedlist_t* insertHead(linkedlist_t* _head, int _data);
 // Insert at End -> linkedlist_t
 void insertEnd(linkedlist_t* _head, int _data);
 
-// Insert at Index -> linkedlist_t
+// Insert a Node at an Index startin at 0 -> linkedlist_t
 void insertIndex(linkedlist_t* _head, int _data, int index);
 
 // Find Node by value -> bool

@@ -67,10 +67,10 @@ void insertEnd(linkedlist_t* _head, int _data){
     return;
 }
 
-// Insert a Node at an Index
+// Insert a Node at an Index startin at 0
 void insertIndex(linkedlist_t* _head, int _data, int index){
     linkedlist_t* tmp = _head;
-    int current = 0;
+    int current = 2; //because adding to previous node
     if (index<0){
         printf("Negative Indexing not yet supported");
         return;
@@ -84,7 +84,9 @@ void insertIndex(linkedlist_t* _head, int _data, int index){
         current++;
         tmp = tmp->next;
     }
-    tmp = createNode(_data);
+    linkedlist_t* temp = createNode(_data);
+    temp->next = tmp->next;
+    tmp->next = temp;
     return;
 }
 
