@@ -11,6 +11,14 @@ binarytree_t* createTree(int _data){
 }
 
 void printTree(binarytree_t* _root){
+    if (_root == NULL){
+        return;
+    }
+    printf(" - %d - ", _root->data);
+    printf(" - Left - ");
+    printTree(_root->left);
+    printf(" - Right - ");
+    printTree(_root->right);
     return;
 }
 
