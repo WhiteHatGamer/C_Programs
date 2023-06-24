@@ -23,6 +23,11 @@ void printTree(binarytree_t* _root){
 }
 
 void freeTree(binarytree_t* _root){
-    free(_root);
+    if (_root == NULL){
+        return;
+    }
+    freeTree(_root->left);
+    freeTree(_root->right);
+    free (_root);
     return;
 }
