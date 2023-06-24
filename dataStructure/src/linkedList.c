@@ -39,7 +39,7 @@ void deleteNode(linkedlist_t* _head, int _data){
         while(tmp!=NULL){
             if ((tmp->next)->data == _data)
             {
-                deleteHead(&tmp);
+                deleteHead(&(tmp->next));
                 return;
             }
             tmp = tmp->next;
