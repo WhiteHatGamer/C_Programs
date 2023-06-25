@@ -10,16 +10,38 @@ binarytree_t* createTree(int _data){
     return branch;
 }
 
-void printTree(binarytree_t* _root){
+void printTabs(int num){
+    for (int i=0;i<num;i++){
+        printf("\t");
+    }
+}
+
+void printTreeRec(binarytree_t* _root, int level){
     if (_root == NULL){
+        printTabs(level);
+        printf("(NULL)\n");
         return;
     }
-    printf(" - %d - ", _root->data);
-    printf(" - Left - ");
-    printTree(_root->left);
-    printf(" - Right - ");
-    printTree(_root->right);
+    printTabs(level);
+    printf("(%d)\n", _root->data);
+    printTabs(level);
+
+    printf("Left: ");
+    printTreeRec(_root->left, level+1);
+    printTabs(level);
+
+    printf("Right: ");
+    printTreeRec(_root->right, level+1);
+    printTabs(level);
+
+    printf("\n");
     return;
+}
+
+void printTree(binarytree_t* _root){
+    printf("\n");
+    printTreeRec(_root, 0);
+    printf("\n");
 }
 
 void freeTree(binarytree_t* _root){
