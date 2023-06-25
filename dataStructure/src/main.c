@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "linkedList.h"
+#include "binaryTree.h"
 
 int main(){
     // Create New Node
@@ -48,6 +49,19 @@ int main(){
     PrintList(Head);
 
     freeLinkedList(Head);
+    printf("List Freed\n");
+
+
+    binarytree_t* Root = createTree(55);
+    Root->left = createTree(99);
+    Root->right = createTree(00);
+    printf("Tree Created\n");
+
+    printTree(Root);
+    printf("Tree printed\n");
+
+    freeTree(Root);
+    printf("Tree Freed\n");
 
     return 0;
 }
