@@ -52,13 +52,18 @@ int main(){
     printf("List Freed\n");
 
 
-    binarytree_t* Root = createTree(55);
-    Root->left = createTree(99);
-    Root->right = createTree(00);
+    binarytree_t* Root = btCreateNode(55);
+    Root->left = btCreateNode(00);
+    Root->right = btCreateNode(66);
     printf("Tree Created\n");
 
     printTree(Root);
     printf("Tree printed\n");
+
+    binarytree_t* Node = btCreateNode(99);
+    btInsertNode(Root, Node);
+    printf("Node Inserted\n");
+    printTree(Root);
 
     freeTree(Root);
     printf("Tree Freed\n");

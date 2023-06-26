@@ -2,12 +2,36 @@
 #include <stdlib.h>
 #include "binaryTree.h"
 
-binarytree_t* createTree(int _data){
+binarytree_t* btCreateNode(int _data){
     binarytree_t* branch = (binarytree_t*)malloc(sizeof(binarytree_t));
     branch->data = _data;
     branch->left = NULL;
     branch->right = NULL;
     return branch;
+}
+
+void btInsertNode(binarytree_t* _root, binarytree_t* _node){
+    if (_root->data < _node->data){
+        if(_root->right == NULL){
+            _root->right = _node;
+        }
+        else{
+            btInsertNode(_root->right, _node);
+        }
+    }
+    else if (_root->data > _node->data)
+    {
+        if(_root->left == NULL){
+            _root->left = _node;
+        }
+        else{
+            btInsertNode(_root->left, _node);
+        }
+    }
+    else if(_root->data == _node->data){
+        printf("[NOTE] Tried to insert Duplicate Value\n");
+    }
+    return;
 }
 
 void printTabs(int num){
