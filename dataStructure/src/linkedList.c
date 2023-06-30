@@ -1,6 +1,6 @@
+#include "linkedList.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "linkedList.h"
 
 // Display List\Traversal
 void PrintList(linkedlist_t* _head){
