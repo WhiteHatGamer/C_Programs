@@ -9,4 +9,6 @@ typedef struct Person{
     //.. Add Others later
 }person_t;
 
+person_t* createPerson(char* _name, int _age);
+
 #endif
