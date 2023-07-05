@@ -17,6 +17,15 @@ unsigned int hash(char* _name){
 
 void initHashTable(){
     for(int i=0;i<TABLE_SIZE;i++){
-        hashTable[i] = NULL;
+        hashTableArray[i] = NULL;
+    }
+}
+
+void printHashTable(){
+    for(int i=0;i<MAX_SIZE;i++){
+        if(hashTableArray[i] == NULL){
+            printf("\t%i\t---", i);
+        }
+        printf("\t%i\t---%s\n", i, hashTableArray[i]->name);
     }
 }
