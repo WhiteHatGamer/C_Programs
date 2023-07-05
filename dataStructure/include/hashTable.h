@@ -7,7 +7,7 @@
 #define MAX_SIZE 256
 #define TABLE_SIZE 10
 
-person_t* hashTable[TABLE_SIZE];
+person_t* hashTableArray[TABLE_SIZE];
 
 // Hash Function
 unsigned int hash(char* _name);
@@ -15,4 +15,6 @@ unsigned int hash(char* _name);
 // Initialize every memory to NULL
 void initHashTable();
 
+// Print Hash Table
+void printHashTable();
 #endif
