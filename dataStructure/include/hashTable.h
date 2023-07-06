@@ -24,4 +24,7 @@ bool htInsert(person_t* _person);
 // Find a person using Name
 person_t* htSearchPerson(char* _name);
 
+// Delete a person from the table array
+person_t* htDeletePerson(char* _name);
+
 #endif
