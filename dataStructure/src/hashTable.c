@@ -51,3 +51,13 @@ bool htInsert(person_t* _person){
     hashTableArray[index] = _person;
     return true;
 }
+
+person_t* htSearchPerson(char* _name){
+    unsigned int indx = hash(_name);
+    if (hashTableArray[indx]!=NULL && strncmp(hashTableArray[indx]->name, _name, TABLE_SIZE)==0){
+        return hashTableArray[indx];
+    }
+    else{
+        return NULL;
+    }
+}
