@@ -7,7 +7,7 @@
 #define MAX_SIZE 256
 #define TABLE_SIZE 10
 
-person_t* hashTableArray[TABLE_SIZE];
+extern person_t* hashTableArray[TABLE_SIZE];
 
 // Hash Function
 unsigned int hash(char* _name);
@@ -17,4 +17,8 @@ void initHashTable();
 
 // Print Hash Table
 void printHashTable();
+
+// Inset a person to hash Table
+bool htInsert(person_t* _person);
+
 #endif
