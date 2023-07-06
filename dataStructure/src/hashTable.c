@@ -45,11 +45,14 @@ bool htInsert(person_t* _person){
         return false;
     }
     unsigned int index = hash(_person->name);
-    if(hashTableArray[index] != NULL){
-        return false;
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        int try = (i + index) % TABLE_SIZE;
+        if(hashTableArray[try] == NULL) {
+            hashTableArray[try] = _person;
+            return true;
+        }
     }
-    hashTableArray[index] = _person;
-    return true;
+    return false;
 }
 
 person_t* htSearchPerson(char* _name){
