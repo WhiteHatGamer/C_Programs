@@ -21,4 +21,7 @@ void printHashTable();
 // Inset a person to hash Table
 bool htInsert(person_t* _person);
 
+// Find a person using Name
+person_t* htSearchPerson(char* _name);
+
 #endif
