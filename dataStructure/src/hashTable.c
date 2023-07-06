@@ -61,3 +61,15 @@ person_t* htSearchPerson(char* _name){
         return NULL;
     }
 }
+
+person_t* htDeletePerson(char* _name){
+    unsigned int indx = hash(_name);
+    if (hashTableArray[indx]!=NULL && strncmp(hashTableArray[indx]->name, _name, TABLE_SIZE)==0){
+        person_t* tmp = hashTableArray[indx];
+        hashTableArray[indx] = NULL;
+        return tmp;
+    }
+    else{
+        return NULL;
+    }
+}
