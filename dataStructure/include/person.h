@@ -11,4 +11,8 @@ typedef struct Person{
 
 person_t* createPerson(char* _name, int _age);
 
+void freePerson(person_t* _person);
+
+void freePersonArray (person_t* _person[], int _personSize);
+
 #endif
