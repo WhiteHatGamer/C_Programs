@@ -26,6 +26,9 @@ void qFront(queue_t* _queue);
 // Prints Rear of the Queue
 void qRear(queue_t* _queue);
 
+// Checks Whether queue is empty
+bool qIsEmpty(queue_t* _queue);
+
 // Free every memory dinamically allocated
 void freeQueue(queue_t* _queue);
 

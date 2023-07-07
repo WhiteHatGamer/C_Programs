@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 queue_t* initQueue(){
     queue_t* q = (queue_t*)malloc(sizeof(queue_t));
@@ -52,6 +53,13 @@ void qFront(queue_t* _queue){
 void qRear(queue_t* _queue){
     printf("Queue Rear: %i",_queue->rear->data);
     return;
+}
+
+bool qIsEmpty(queue_t* _queue){
+    if (_queue->front == NULL){
+        return true;
+    }
+    return false;
 }
 
 void freeQueue(queue_t* _queue){
