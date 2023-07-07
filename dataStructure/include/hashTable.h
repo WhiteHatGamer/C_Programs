@@ -6,6 +6,7 @@
 
 #define MAX_SIZE 256
 #define TABLE_SIZE 10
+#define DELETED_NODE (person_t*)(0xFFFFFFFFFFFFFFFFUL)
 
 extern person_t* hashTableArray[TABLE_SIZE];
 
