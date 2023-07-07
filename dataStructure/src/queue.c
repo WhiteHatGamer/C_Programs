@@ -32,6 +32,18 @@ void dequeue(queue_t* _queue){
     return;
 }
 
+void qPrint(queue_t* _queue){
+    printf("\nFront: ");
+    linkedlist_t *tmp = _queue->front;
+
+    while(tmp != NULL){
+        printf("%d <- ", tmp->data);
+        tmp = tmp->next;
+    }
+    printf(":Rear\n");
+    return;
+}
+
 void qFront(queue_t* _queue){
     printf("Queue Front: %i",_queue->front->data);
     return;

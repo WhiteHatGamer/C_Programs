@@ -17,6 +17,9 @@ void enqueue(queue_t* _queue, int _data);
 // Delete/dequeue from Queue
 void dequeue(queue_t* _queue);
 
+// Prints the Queue
+void qPrint(queue_t* _queue);
+
 // Prints Front of the queue
 void qFront(queue_t* _queue);
 
