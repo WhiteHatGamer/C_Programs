@@ -21,6 +21,14 @@ void enqueue(queue_t* _queue, int _data){
     return;
 }
 
+void dequeue(queue_t* _queue){
+    if(_queue->front==NULL){
+        return;
+    }
+    deleteHead(&(_queue->front));
+    return;
+}
+
 void freeQueue(queue_t* _queue){
     freeLinkedList(_queue->front);
     free(_queue);
