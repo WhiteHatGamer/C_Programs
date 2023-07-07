@@ -25,7 +25,20 @@ void dequeue(queue_t* _queue){
     if(_queue->front==NULL){
         return;
     }
+    if(_queue->front == _queue->rear){
+        _queue->rear = NULL;
+    }
     deleteHead(&(_queue->front));
+    return;
+}
+
+void qFront(queue_t* _queue){
+    printf("Queue Front: %i",_queue->front->data);
+    return;
+}
+
+void qRear(queue_t* _queue){
+    printf("Queue Rear: %i",_queue->rear->data);
     return;
 }
 
