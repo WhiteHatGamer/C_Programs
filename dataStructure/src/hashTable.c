@@ -33,6 +33,9 @@ void printHashTable(){
         if(hashTableArray[i] == NULL){
             printf("\t%i\t---\n", i);
         }
+        else if (hashTableArray[i] == DELETED_NODE){
+            printf("\t%i\t<deleted>\n", i);
+        }
         else{
             printf("\t%i\t%s\n", i, hashTableArray[i]->name);
         }
@@ -47,7 +50,7 @@ bool htInsert(person_t* _person){
     unsigned int index = hash(_person->name);
     for (int i = 0; i < TABLE_SIZE; i++) {
         int try = (i + index) % TABLE_SIZE;
-        if(hashTableArray[try] == NULL) {
+        if(hashTableArray[try] == NULL || hashTableArray[try] == DELETED_NODE) {
             hashTableArray[try] = _person;
             return true;
         }
@@ -57,22 +60,36 @@ bool htInsert(person_t* _person){
 
 person_t* htSearchPerson(char* _name){
     unsigned int indx = hash(_name);
-    if (hashTableArray[indx]!=NULL && strncmp(hashTableArray[indx]->name, _name, TABLE_SIZE)==0){
-        return hashTableArray[indx];
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        int try = (i + indx) % TABLE_SIZE;
+        if(hashTableArray[try] == NULL){
+            return NULL;
+        }
+        if(hashTableArray[try] == DELETED_NODE){
+            continue;
+        }
+        if (strncmp(hashTableArray[try]->name, _name, TABLE_SIZE)==0){
+            return hashTableArray[try];
+        }
     }
-    else{
-        return NULL;
-    }
+    return NULL;
 }
 
 person_t* htDeletePerson(char* _name){
     unsigned int indx = hash(_name);
-    if (hashTableArray[indx]!=NULL && strncmp(hashTableArray[indx]->name, _name, TABLE_SIZE)==0){
-        person_t* tmp = hashTableArray[indx];
-        hashTableArray[indx] = NULL;
-        return tmp;
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        int try = (i + indx) % TABLE_SIZE;
+        if(hashTableArray[try] == NULL){
+            return NULL;
+        }
+        if(hashTableArray[try] == DELETED_NODE){
+            continue;
+        }
+        if (hashTableArray[try] != NULL && strncmp(hashTableArray[try]->name, _name, TABLE_SIZE)==0){
+            person_t* tmp = hashTableArray[try];
+            hashTableArray[try] = DELETED_NODE;
+            return tmp;
+        }
     }
-    else{
-        return NULL;
-    }
+    return NULL;
 }
