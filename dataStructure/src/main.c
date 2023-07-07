@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "linkedList.h"
 #include "binaryTree.h"
+#include "person.h"
+#include "hashTable.h"
 
 int main(){
     // Create New Node
@@ -49,7 +51,7 @@ int main(){
     PrintList(Head);
 
     freeLinkedList(Head);
-    printf("List Freed\n");
+    printf("List Freed\n\n");
 
 
     binarytree_t* Root = btCreateNode(55);
@@ -66,7 +68,51 @@ int main(){
     printTree(Root);
 
     freeTree(Root);
-    printf("Tree Freed\n");
+    printf("Tree Freed\n\n");
+
+
+    initHashTable();
+    printHashTable();
+    printf("\n");
+    person_t* person[10] = {NULL};
+    person[0] = createPerson("Bob", 23);
+    person[1] = createPerson("alex", 35);
+    person[2] = createPerson("joyce", 30);
+    person[3] = createPerson("JohnCena", 45);
+    person[4] = createPerson("Doctor", 256);
+    htInsert(person[0]);
+    htInsert(person[1]);
+    htInsert(person[2]);
+    htInsert(person[3]);
+    htInsert(person[4]);
+    printHashTable();
+
+    person_t* tmp = htSearchPerson("Bob");
+    if (tmp==NULL){
+        printf("Person Not Found\n");
+    }
+    else{
+        printf("Person Found: %s\n", tmp->name);
+    }
+
+    tmp = htSearchPerson("Unknown");
+    if (tmp==NULL){
+        printf("Person Not Found\n");
+    }
+    else{
+        printf("Person Found: %s\n", tmp->name);
+    }
+
+    int personSize = sizeof(person)/sizeof(person[0]);
+    for(int i=0;i<personSize;i++){
+        if (person[i] != NULL){
+            htDeletePerson(person[i]->name);
+        }
+    }
+    freePerson(&person[0]);
+    freePersonArray(person, personSize);
+    printf("Person Freed\n");
+    printHashTable();
 
     return 0;
 }
