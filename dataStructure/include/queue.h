@@ -11,6 +11,8 @@ typedef struct Queue{
 // Initialize a New Queue
 queue_t* initQueue();
 
+void enqueue(queue_t* _queue, int _data);
+
 // Free every memory dinamically allocated
 void freeQueue(queue_t* _queue);
 
