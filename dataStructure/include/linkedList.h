@@ -6,7 +6,7 @@ typedef struct LinkedList{
     struct LinkedList* next;
 }linkedlist_t;
 
-typedef enum { false, true } bool;
+#include <stdbool.h>
 
 // Display List
 void PrintList(linkedlist_t* _head);
