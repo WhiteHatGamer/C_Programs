@@ -4,6 +4,7 @@
 #include "binaryTree.h"
 #include "person.h"
 #include "hashTable.h"
+#include "queue.h"
 
 int main(){
     // Create New Node
@@ -113,6 +114,30 @@ int main(){
     freePersonArray(person, personSize);
     printf("Person Freed\n");
     printHashTable();
+
+
+    queue_t* queue = initQueue();
+
+    for(int i=0;i<25;i++){
+        enqueue(queue, i);
+    }
+    qPrint(queue);
+
+    dequeue(queue);
+    qPrint(queue);
+    for(int i=0;i<25;i++){
+        dequeue(queue);
+    }
+
+    qPrint(queue);
+    if (qIsEmpty(queue))
+    {
+        printf("Queue is Empty");
+    }
+
+    freeQueue(queue);
+    printf("\nQueue Freed\n");
+    
 
     return 0;
 }
