@@ -64,5 +64,7 @@ bool qIsEmpty(queue_t* _queue){
 
 void freeQueue(queue_t* _queue){
     freeLinkedList(_queue->front);
+    _queue->front = NULL;
+    _queue->rear = NULL;
     free(_queue);
 }
