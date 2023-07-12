@@ -1,12 +1,18 @@
 #ifndef STACK_H
 #define STACK H
 
-#define MAX_SIZE 5
+#define STACK_MAX_SIZE 5
 
 #include "linkedList.h"
 
 typedef struct Stack{
     linkedlist_t* top;
 }stack_t;
+
+// Initialize stack
+stack_t* initStack();
+
+// Free stack and other dynamic allocated
+void freeStack (stack_t* _stack);
 
 #endif
