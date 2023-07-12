@@ -1,13 +1,24 @@
-CC = gcc
-CFLAGS = -g -Wall -Wextra -Iinclude
+OS := $(shell uname)
+ifeq ($(OS),Linux)
+	BIN_EXT := .exe
+	RM := rm -rf
+	PS := /
+else
+	BIN_EXT := 
+	RM := del /Q
+	PS := \\
+endif
 
-SRC_DIR = src
-OBJ_DIR = obj
-BIN_DIR = bin
+CC := gcc
+CFLAGS := -g -Wall -Wextra -Iinclude
 
-SRCS = $(wildcard $(SRC_DIR)/*.c)
-OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
-BIN = $(BIN_DIR)\main
+SRC_DIR := src
+OBJ_DIR := obj
+BIN_DIR := bin
+
+SRCS := $(wildcard $(SRC_DIR)/*.c)
+OBJS := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
+BIN := $(BIN_DIR)$(PS)main$(BIN_EXT)
 
 .PHONY: all clean
 
@@ -20,8 +31,8 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run:
-	$(BIN).exe
+	$(BIN)
 
 clean:
-	del /Q $(OBJ_DIR)\*
-	del /Q $(BIN_DIR)\*
+	$(RM) $(OBJ_DIR)$(PS)*
+	$(RM) $(BIN_DIR)$(PS)*
