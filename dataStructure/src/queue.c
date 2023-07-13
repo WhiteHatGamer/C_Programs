@@ -13,6 +13,10 @@ queue_t* initQueue(){
 
 void enqueue(queue_t* _queue, int _data){
     linkedlist_t* tmp = createNode(_data);
+    if (tmp == NULL){
+        // malloc failed 
+        return;
+    }
     if (_queue->front == NULL){
         _queue->front = _queue->rear = tmp;
         return;
