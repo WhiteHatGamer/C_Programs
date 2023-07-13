@@ -31,6 +31,17 @@ void pop(stack_t* _stack){
     }
 }
 
+void printStack(stack_t* _stack){
+    printf("\n---\n");
+    linkedlist_t* tmp = _stack->top;
+    while (tmp!= NULL){
+        printf("%d\n",tmp->data);
+        tmp = tmp->next;
+    }
+    printf("---\n\n");
+    return;
+}
+
 void freeStack (stack_t* _stack){
     freeLinkedList(_stack->top);
     _stack->top = NULL;
