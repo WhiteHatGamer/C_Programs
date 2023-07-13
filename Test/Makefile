@@ -33,6 +33,11 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 run:
 	$(BIN)
 
+ifeq ($(OS),Linux)
+valgrind:
+	valgrind --leak-check=yes -s ./$(BIN)
+endif
+
 clean:
 	$(RM) $(OBJ_DIR)$(PS)*
 	$(RM) $(BIN_DIR)$(PS)*
