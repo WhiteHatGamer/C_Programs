@@ -20,6 +20,9 @@ linkedlist_t* createNode(int _data){
         result->data = _data;
         result->next = NULL;
     }
+    else{
+        return NULL;
+    }
     return result;
 }
 
