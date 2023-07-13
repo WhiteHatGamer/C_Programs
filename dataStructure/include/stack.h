@@ -15,6 +15,9 @@ stack_t* initStack();
 // Push to stack
 void push(stack_t* _stack, int _data);
 
+// Pop from Stack
+void pop(stack_t* _stack);
+
 // Free stack and other dynamic allocated
 void freeStack (stack_t* _stack);
 
