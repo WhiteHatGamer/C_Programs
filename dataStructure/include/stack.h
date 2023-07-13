@@ -12,6 +12,9 @@ typedef struct Stack{
 // Initialize stack
 stack_t* initStack();
 
+// Push to stack
+void push(stack_t* _stack, int _data);
+
 // Free stack and other dynamic allocated
 void freeStack (stack_t* _stack);
 

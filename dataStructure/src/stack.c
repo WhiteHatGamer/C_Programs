@@ -10,7 +10,16 @@ stack_t* initStack(){
     return _stack;
 }
 
+void push(stack_t* _stack, int _data){
+    if(_stack->top == NULL){
+        _stack->top = createNode(_data);
+        return;
+    }
+    _stack->top = insertHead(_stack->top, _data);
+}
+
 void freeStack (stack_t* _stack){
     freeLinkedList(_stack->top);
+    _stack->top = NULL;
     free(_stack);
 }
