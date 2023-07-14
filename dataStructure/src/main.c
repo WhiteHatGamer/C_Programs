@@ -5,6 +5,7 @@
 #include "person.h"
 #include "hashTable.h"
 #include "queue.h"
+#include "stack.h"
 
 int main(){
     // Create New Node
@@ -138,6 +139,24 @@ int main(){
     freeQueue(queue);
     printf("\nQueue Freed\n");
     
+
+    stack_t* stack = initStack();
+    printf("\nStack Initialized\n");
+
+    for (int i=0;i<16;i++){
+        if (i==14){push(stack,999);}
+        push(stack, i);
+    }
+    printf("Stack Pushed\n");
+    printStack(stack);
+
+    pop(stack);
+    pop(stack);
+    pop(stack);
+    printStack(stack);
+
+    freeStack(stack);
+    printf("Stack Freed\n");
 
     return 0;
 }
