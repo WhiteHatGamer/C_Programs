@@ -22,4 +22,7 @@ typedef struct bitField bitfield_t;
 // Initialize bit Fields to null
 bitfield_t* initBitField();
 
+// Free Bitfields
+void freeBitfield(bitfield_t* _bit);
+
 #endif

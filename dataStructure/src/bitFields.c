@@ -11,4 +11,9 @@ bitfield_t* initBitField(){
     tmp->medium = 0;
     tmp->large = 0;
     tmp->options = 0;
+    return tmp;
+}
+
+void freeBitfield(bitfield_t* _bit){
+    free (_bit);
 }
