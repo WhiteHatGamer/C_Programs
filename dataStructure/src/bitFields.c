@@ -19,22 +19,10 @@ void freeBitfield(bitfield_t* _bit){
 }
 
 void printBin(int _int, int _bit){
-    int hex = 1;
-    for (int i=0;i<_bit;i++){
-        hex *= 2;
+    for (int i = 0; i < _bit; i++) {
+        int bitValue = (_int >> (_bit - i - 1)) & 1;
+        printf("%d", bitValue);
     }
-    for (int i=0;i<=_bit;i++){
-        if (_int & hex)
-        {
-            printf("1");
-        }else{
-            printf("0");
-        }
-        //printf("%i ",hex);
-        hex /= 2;
-    }
-    //printf("\n");
-    return;
 }
 
 void Print64Bit(uint64_t _bit64){
