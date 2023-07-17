@@ -18,7 +18,7 @@ void sleep(int ms){
     return;
 }
 
-int main(){
+int main(int argc, char** argv){
     // Create New Node
     linkedlist_t* Head = createNode(999);
 
@@ -219,5 +219,14 @@ int main(){
     Print64Bit(bits->bit64);
     printf("\n");
     
+    freeBitfield(bits);
+    printf("BitFields Freed\n\n");
+
+
+    printf("argc: %i\n",argc);
+    for(int i=0;i<argc;i++){
+        printf("argv[%i]: %s\n", i, argv[i]);
+    }
+
     return 0;
 }
