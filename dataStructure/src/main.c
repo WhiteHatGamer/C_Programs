@@ -1,11 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "linkedList.h"
 #include "binaryTree.h"
 #include "person.h"
 #include "hashTable.h"
 #include "queue.h"
 #include "stack.h"
+#include "bitFields.h"
+
+void sleep(int ms){
+    ms = ms * 5714285;
+    for (int i=0;i<ms;i++)
+    {
+        i=i;
+    }
+    return;
+}
 
 int main(){
     // Create New Node
@@ -158,5 +169,55 @@ int main(){
     freeStack(stack);
     printf("Stack Freed\n");
 
+    printf("\n");
+    bitfield_t* bits = initBitField();
+    #define LOG_SR  0x01
+    #define LOG_TM  0x02
+    #define LOG_USR 0x04
+    #define LOG_DIR 0x08
+
+    //bits->options |= 0x01; //1
+    //bits->options |= 0x02; //2
+    //bits->options |= 0x04; //4
+    //bits->options |= 0x08; //8
+    bits->options |= 0x0F; //15
+    char* message = "Hellow World!";
+    if (bits->options & LOG_SR){
+        printf("1: ");
+    }
+    if (bits->options & LOG_TM){
+        printf("14/07/23 19:16:00: ");
+    }
+    if (bits->options & LOG_USR){
+        printf("WHG: ");
+    }
+    if (bits->options & LOG_DIR){
+        printf("C://User/Documents $");
+    }
+    printf("%s\n\n", message);
+
+    for (int i=0;i< 32;i++){
+        printBin(bits->small,2);
+        printf(" ");
+        printBin(bits->medium,3);
+        printf(" ");
+        printBin(bits->large,4);
+        printf("\n");
+        bits->small++;
+        bits->medium++;
+        bits->large++;
+    }
+
+    SET_BIT(bits->bit64, 10);
+    SET_BIT(bits->bit64, 2);
+    SET_BIT(bits->bit64, 16);
+    SET_BIT(bits->bit64, 35);
+
+    Print64Bit(bits->bit64);
+    printf("\n");
+    CLR_BIT(bits->bit64, 16);
+    Print64Bit(bits->bit64);
+    printf("\n");
+    
     return 0;
 }
