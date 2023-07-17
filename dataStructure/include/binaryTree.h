@@ -7,19 +7,23 @@ typedef struct BinaryTree{
     struct BinaryTree* right;
 }binarytree_t;
 
+// Creating a Tree Node
 binarytree_t* btCreateNode(int _data);
 
 // Insert a Node in Tree
-void btInsertNode(binarytree_t* _root, binarytree_t* _node);
+void btInsertNode(binarytree_t** _root, int _data);
 
 //TODO: search for a node in tree
+
 //TODO: bfs
+binarytree_t* btSearchNodeBFS(binarytree_t* _root, int _data);
+
 //TODO: dfs
 
 //TODO: Delete a node in tree
 //TODO: without child, one chile, two child
 
-//TODO: in order traverssal in a tree
+//TODO: in order traversal in a tree
 void printTree(binarytree_t* _root);
 
 //TODO: pre order traversal in a tree

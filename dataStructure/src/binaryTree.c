@@ -1,37 +1,57 @@
+#include "binaryTree.h"
+#include "queue.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "binaryTree.h"
 
 binarytree_t* btCreateNode(int _data){
     binarytree_t* branch = (binarytree_t*)malloc(sizeof(binarytree_t));
+    if (branch==NULL){
+        // No Memory
+        return NULL;
+    }
     branch->data = _data;
     branch->left = NULL;
     branch->right = NULL;
     return branch;
 }
 
-void btInsertNode(binarytree_t* _root, binarytree_t* _node){
-    if (_root->data < _node->data){
-        if(_root->right == NULL){
-            _root->right = _node;
+void btInsertNode(binarytree_t** _root, int _data){
+    // Had Created node pointer for creating but tends to leak memory
+    if(*_root==NULL){
+        *_root = btCreateNode(_data);
+        return;
+    }
+    if ((*_root)->data < _data){
+        if((*_root)->right == NULL){
+            (*_root)->right = btCreateNode(_data);;
         }
         else{
-            btInsertNode(_root->right, _node);
+            btInsertNode(&(*_root)->right, _data);
         }
     }
-    else if (_root->data > _node->data)
+    else if ((*_root)->data > _data)
     {
-        if(_root->left == NULL){
-            _root->left = _node;
+        if((*_root)->left == NULL){
+            (*_root)->left = btCreateNode(_data);;
         }
         else{
-            btInsertNode(_root->left, _node);
+            btInsertNode(&(*_root)->left, _data);
         }
     }
-    else if(_root->data == _node->data){
+    else if((*_root)->data == _data){
         printf("[NOTE] Tried to insert Duplicate Value\n");
     }
     return;
+}
+
+
+binarytree_t* btSearchNodeBFS(binarytree_t* _root, int _data){
+    if (_root->data == _data){
+        return _root;
+    }
+    else{
+        return NULL;
+    }
 }
 
 void printTabs(int num){
