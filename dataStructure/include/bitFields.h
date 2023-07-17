@@ -25,4 +25,10 @@ bitfield_t* initBitField();
 // Free Bitfields
 void freeBitfield(bitfield_t* _bit);
 
+// Print as Binary
+void printBin(int _int, int _bit);
+
+// Print 64 Bit as + .
+void Print64Bit(uint64_t _bit64);
+
 #endif
