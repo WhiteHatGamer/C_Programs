@@ -44,6 +44,24 @@ void btInsertNode(binarytree_t** _root, int _data){
     return;
 }
 
+binarytree_t* btSearchNodeDFS(binarytree_t* _root, int _data){
+    // Had Created node pointer for creating but tends to leak memory
+    if(_root==NULL){
+        // NULL Validation
+        return NULL;
+    }
+    if(_root->data == _data){
+        return _root;
+    }
+    else if (_root->data < _data){
+        return btSearchNodeDFS(_root->right, _data);
+    }
+    else if (_root->data > _data)
+    {
+        return btSearchNodeDFS(_root->left, _data);
+    }
+    return NULL;
+}
 
 binarytree_t* btSearchNodeBFS(binarytree_t* _root, int _data){
     if (_root->data == _data){

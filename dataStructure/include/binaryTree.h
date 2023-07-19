@@ -14,16 +14,16 @@ binarytree_t* btCreateNode(int _data);
 void btInsertNode(binarytree_t** _root, int _data);
 
 //TODO: search for a node in tree
-
 //TODO: bfs
 binarytree_t* btSearchNodeBFS(binarytree_t* _root, int _data);
 
-//TODO: dfs
+// dfs
+binarytree_t* btSearchNodeDFS(binarytree_t* _root, int _data);
 
 //TODO: Delete a node in tree
 //TODO: without child, one chile, two child
 
-//TODO: in order traversal in a tree
+// in order traversal in a tree
 void printTree(binarytree_t* _root);
 
 //TODO: pre order traversal in a tree
