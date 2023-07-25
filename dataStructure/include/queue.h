@@ -3,10 +3,7 @@
 
 #include "linkedList.h"
 
-typedef struct Queue{
-    linkedlist_t* front;
-    linkedlist_t* rear;
-}queue_t;
+typedef struct Queue queue_t;
 
 // Initialize a New Queue
 queue_t* initQueue();
