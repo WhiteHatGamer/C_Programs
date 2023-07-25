@@ -6,6 +6,10 @@
 
 bitfield_t* initBitField(){
     bitfield_t* tmp = (bitfield_t*)malloc(sizeof(bitfield_t));
+    if (!tmp){
+        //NULL Validation
+        return NULL;
+    }
     tmp->bit64 = 0;
     tmp->small = 0;
     tmp->medium = 0;
