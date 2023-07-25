@@ -1,0 +1,64 @@
+//#include <stdio.h>
+//#include <
+
+
+i=0
+
+[                       child[i0] = 1
+55 ] [  0,99            child[i0] = 0, child[i1] = 2
+0       99,32           child[i1] = 1, child[i2] = 1
+99 ] [  32,66           child[i1] = 0, child[i2] = 2
+32      66,22,45        child[i2] = 1, child[i3] = 2
+66 ] [  22,45,64,68     child[i2] = 0, child[i3] = 4
+22      45,64,68,10     child[i3] = 3, child[i4] = 1
+45      64,68,10,50     child[i3] = 2, child[i4] = 2
+64      68,10,50        child[i3] = 1, child[i4] = 2
+68 ] [  10,50           child[i3] = 0, child[i4] = 2
+10      50,5,15         child[i4] = 1, child[i5] = 2
+50 ] [  5,15            child[i4] = 0, child[i5] = 2
+5       15              child[i5] = 1, child[i6] = 0
+15 ] [                  child[i5] = 0, child[i6] = 0
+]                       child[i6] = 0;
+
+
+(55)
+    (0)
+        (N)
+        (32)
+            (22)
+                (10)
+                    (5)
+                        (N)
+                        (N)
+                    (15)
+                        (N)
+                        (N)
+                (N)
+            (45)
+                (N)
+                (50)
+                    (N)
+                    (N)
+    (99)
+        (66)
+            (64)
+                (N)
+                (N)
+            (68)
+                (N)
+                (N)
+        (N)
+
+
+
+
+                                [
+55   1 child level 0 q- 55      55 ] [
+0,99 2 child level 1 q- 0,99    0
+32   1 child level 2 q- 99,32   99 ] [
+66   1 child level 2 q- 32,66   32
+     0 child level 3 q- 66      66 ] [
+64   1 child level 4 q- 64      64 ] []
+     0 child level 5 q- ~
+
+
