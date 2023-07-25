@@ -26,15 +26,16 @@ void enqueue(queue_t* _queue, int _data){
     return;
 }
 
-void dequeue(queue_t* _queue){
+int dequeue(queue_t* _queue){
     if(_queue->front==NULL){
-        return;
+        return NULL;
     }
     if(_queue->front == _queue->rear){
         _queue->rear = NULL;
     }
+    int tmp = _queue->front->data;
     deleteHead(&(_queue->front));
-    return;
+    return tmp;
 }
 
 void qPrint(queue_t* _queue){
