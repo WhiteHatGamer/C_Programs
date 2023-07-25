@@ -6,6 +6,10 @@
 
 stack_t* initStack(){
     stack_t* _stack = (stack_t*)malloc(sizeof(stack_t));
+    if(!_stack){
+        // Null Validation
+        return NULL;
+    }
     _stack->top = NULL;
     return _stack;
 }
