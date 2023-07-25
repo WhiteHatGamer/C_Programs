@@ -7,6 +7,11 @@ typedef struct BinaryTree{
     struct BinaryTree* right;
 }binarytree_t;
 
+typedef enum {
+    BFS_SEARCH = 0x01,
+    BFS_PRINT = 0x02
+} BFS_Operation;
+
 // Creating a Tree Node
 binarytree_t* btCreateNode(int _data);
 
@@ -15,7 +20,7 @@ void btInsertNode(binarytree_t** _root, int _data);
 
 //TODO: search for a node in tree
 //TODO: bfs
-binarytree_t* btSearchNodeBFS(binarytree_t* _root, int _data);
+binarytree_t* btNodeBFS(binarytree_t* _root, int _data, BFS_Operation options);
 
 // dfs
 binarytree_t* btSearchNodeDFS(binarytree_t* _root, int _data);
