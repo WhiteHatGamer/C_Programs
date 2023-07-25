@@ -7,6 +7,10 @@
 
 queue_t* initQueue(){
     queue_t* q = (queue_t*)malloc(sizeof(queue_t));
+    if (q == NULL){
+        // malloc failed 
+        return NULL;
+    }
     q->front = q->rear = NULL;
     return q;
 }
