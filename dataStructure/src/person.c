@@ -5,6 +5,10 @@
 
 person_t* createPerson(char* _name, int _age){
     person_t* person = (person_t*)malloc(sizeof(person_t));
+    if(!person){
+        // Null Validation
+        return NULL;
+    }
     strcpy(person->name, _name);
     person->age = _age;
     return person;
