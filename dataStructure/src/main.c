@@ -9,6 +9,14 @@
 #include "stack.h"
 #include "bitFields.h"
 
+void cleanupFunction(){
+    atexit(freeBitfield);
+    atexit(freeLinkedList);
+    atexit(freeQueue);
+    atexit(freeStack);
+    atexit(freeTree);
+}
+
 void sleep(int ms){
     ms = ms * 5714285;
     for (int i=0;i<ms;i++)
@@ -19,6 +27,8 @@ void sleep(int ms){
 }
 
 int main(int argc, char** argv){
+    atexit(cleanupFunction);
+
     // Create New Node
     linkedlist_t* Head = createNode(999);
 
@@ -68,17 +78,36 @@ int main(int argc, char** argv){
 
 
     binarytree_t* Root = btCreateNode(55);
-    Root->left = btCreateNode(00);
-    Root->right = btCreateNode(66);
+    btInsertNode(&Root,00);
+    btInsertNode(&Root,32);
     printf("Tree Created\n");
 
     printTree(Root);
     printf("Tree printed\n");
 
-    binarytree_t* Node = btCreateNode(99);
-    btInsertNode(Root, Node);
+    btInsertNode(&Root,99);
+    btInsertNode(&Root,66);
+    btInsertNode(&Root,64);
+
     printf("Node Inserted\n");
     printTree(Root);
+
+    binarytree_t* node = NULL;
+    node = btSearchNodeDFS(Root, 55);
+    if (node == NULL){
+        printf("Tree Node Not Found\n");
+    }else{
+        printf("Node Found: %d\n", node->data);
+    }
+    node = btSearchNodeDFS(Root, 63);
+    if (node == NULL){
+        printf("Tree Node Not Found\n");
+    }else{
+        printf("Node Found: %d\n", node->data);
+    }
+    btNodeBFS(Root, 1, BFS_PRINT);
+    btNodeBFS(Root, 32, BFS_SEARCH);
+    btNodeBFS(Root, 64, BFS_PRINT | BFS_SEARCH);
 
     freeTree(Root);
     printf("Tree Freed\n\n");
