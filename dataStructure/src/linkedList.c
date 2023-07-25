@@ -21,6 +21,7 @@ linkedlist_t* createNode(int _data){
         result->next = NULL;
     }
     else{
+        // Null Validation
         return NULL;
     }
     return result;
