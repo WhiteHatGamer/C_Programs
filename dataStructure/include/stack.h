@@ -1,5 +1,5 @@
 #ifndef STACK_H
-#define STACK H
+#define STACK_H
 
 #define STACK_MAX_SIZE 5
 
