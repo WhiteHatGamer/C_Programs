@@ -13,6 +13,8 @@ typedef struct Trie
 
 trie_t* initTrie();
 
-void freeTrie(trie_t* _root);
+bool freeTrie(trie_t* _root);
+
+
 
 #endif
