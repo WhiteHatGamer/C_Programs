@@ -1,3 +1,6 @@
+# $(subst from,to,text)
+# $(patsubst pattern,replacement,text)
+
 OS := $(shell uname)
 ifeq ($(OS),Linux)
 	BIN_EXT := .exe
@@ -18,14 +21,14 @@ OBJ_DIR   := obj
 BIN_DIR   := bin
 LIB_DIR   := lib
 TEST_DIR  := tests
-TEST_LIBS := lib$(PS)libqueue.a lib$(PS)liblinkedList.a
 
-SRCS := $(wildcard $(SRC_DIR)/*.c)
-TESTS := $(wildcard $(TEST_DIR)/*.c)
+MAINOBJ	:= $(OBJ_DIR)$(PS)main.o
+SRCS 	:= $(wildcard $(SRC_DIR)/*.c)
+TESTS 	:= $(wildcard $(TEST_DIR)/*.c)
 TESTBIN := $(patsubst $(TEST_DIR)/%.c, $(TEST_DIR)/bin/%, $(TESTS))
-OBJS := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
-BIN := $(BIN_DIR)$(PS)main$(BIN_EXT)
-LIBS := $(patsubst $(OBJ_DIR)/%.o, $(LIB_DIR)/lib%.a, $(OBJS))
+OBJS 	:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
+BIN 	:= $(BIN_DIR)$(PS)main$(BIN_EXT)
+LIBS 	:= $(patsubst $(OBJ_DIR)/%.o, $(LIB_DIR)/lib%.a, $(filter-out $(MAINOBJ), $(OBJS)))
 
 .PHONY: all clean
 
@@ -41,7 +44,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(TEST_DIR)/bin/%: $(TEST_DIR)/%.c $(LIBS)
-	$(CC) $(TEST_CFLAGS) $< $(TEST_LIBS) -o $@ -lcriterion
+	$(CC) $(TEST_CFLAGS) $< $(LIBS) -o $@ -lcriterion
 
 run: $(BIN)
 	$(BIN)
