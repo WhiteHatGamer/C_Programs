@@ -11,4 +11,6 @@ typedef struct Trie
     bool terminal;
 }trie_t;
 
+trie_t* initTrie();
+
 #endif
