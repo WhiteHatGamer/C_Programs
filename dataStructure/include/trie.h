@@ -21,6 +21,9 @@ bool insertTrie(trie_t** _root, char* _signedText);
 // Delete From Trie
 bool deleteTrie(trie_t* _root, char* _signedText);
 
+// Search From Trie
+bool searchTrie(trie_t* _root, char* _signedText);
+
 // Print Trie
 void printTrie(trie_t* _root);
 
