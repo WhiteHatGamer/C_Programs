@@ -18,6 +18,9 @@ trie_t* initTrie();
 // Insert Into Trie
 bool insertTrie(trie_t** _root, char* _signedText);
 
+// Print Trie
+void printTrie(trie_t* _root);
+
 // Frees trie allocated by malloc
 bool freeTrie(trie_t* _root);
 
