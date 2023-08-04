@@ -50,7 +50,7 @@ run: $(BIN)
 	$(BIN)
 
 ifeq ($(OS),Linux)
-valgrind:
+valgrind: $(BIN)
 	valgrind --leak-check=yes -s ./$(BIN)
 endif
 
