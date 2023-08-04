@@ -38,18 +38,19 @@ bool insertTrie(trie_t** _root, char* _signedText){
     }else{
         tmp->terminal = true;
     }
+    // Returns true if the word was successfully inserted.
     return true;
 }
 
-// bool freeTrie(trie_t* _root){
-//     if (_root == NULL)
-//     {
-//         return;
-//     }
-//     for (int i = 0; i < TRIE_SIZE; i++)
-//     {
-//         freeTrie(_root->child[i]);
-//     }
-//     free(_root);
-//     return true;
-// }
+bool freeTrie(trie_t* _root){
+    if (_root == NULL)
+    {
+        return false;
+    }
+    for (int i = 0; i < TRIE_SIZE; i++)
+    {
+        freeTrie(_root->child[i]);
+    }
+    free(_root);
+    return true;
+}
