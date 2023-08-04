@@ -42,6 +42,30 @@ bool insertTrie(trie_t** _root, char* _signedText){
     return true;
 }
 
+void printTrieRec(trie_t* _node, unsigned char* _prefix, int length){
+    unsigned char _newPrefix[length+2];
+    memcpy(_newPrefix, _prefix, length);
+    _newPrefix[length+1] = 0;
+    if(_node->terminal){
+        printf("WORD: %s\n", _prefix);
+    }
+    for (int i=0;i<TRIE_SIZE; i++){
+        if(_node->child[i] != NULL){
+            _newPrefix[length] = i;
+            printTrieRec(_node->child[i], _newPrefix, length+1);
+        }
+    }
+}
+
+void printTrie(trie_t* _root){
+    if (_root == NULL){
+        printf("Trie EMPTY\n");
+        return;
+    }
+    printTrieRec(_root, NULL, 0);
+    return;
+}
+
 bool freeTrie(trie_t* _root){
     if (_root == NULL)
     {
