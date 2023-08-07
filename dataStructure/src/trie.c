@@ -42,6 +42,20 @@ bool insertTrie(trie_t** _root, char* _signedText){
     return true;
 }
 
+// Find if Trie Node has Child
+bool trieHasChild(trie_t* node){
+    if (node== NULL){
+        return false;
+    }
+    for (int i=0;i<TRIE_SIZE;i++){
+        if (node->child[i] != NULL){
+            // Trie Node has atleast one child
+            return true;
+        }
+    }
+    return false;
+}
+
 bool deleteTrie(trie_t* _root, char* _signedText){
     if (_root == NULL){
         return false;
