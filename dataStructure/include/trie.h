@@ -18,6 +18,9 @@ trie_t* initTrie();
 // Insert Into Trie
 bool insertTrie(trie_t** _root, char* _signedText);
 
+// Check if has Children
+bool trieHasChild(trie_t* node);
+
 // Delete From Trie
 bool deleteTrie(trie_t* _root, char* _signedText);
 
