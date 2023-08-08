@@ -8,6 +8,7 @@
 #include "queue.h"
 #include "stack.h"
 #include "bitFields.h"
+#include "trie.h"
 
 void cleanupFunction(){
     atexit(freeBitfield);
@@ -15,6 +16,7 @@ void cleanupFunction(){
     atexit(freeQueue);
     atexit(freeStack);
     atexit(freeTree);
+    atexit(freeTrie);
 }
 
 void sleep(int ms){
@@ -250,6 +252,33 @@ int main(int argc, char** argv){
     
     freeBitfield(bits);
     printf("BitFields Freed\n\n");
+
+
+    trie_t* trieRoot=initTrie();
+    printf("Trie Initialised\n");
+
+    insertTrie(&trieRoot, "Hello");
+    insertTrie(&trieRoot, "World");
+    insertTrie(&trieRoot, "Dettol");
+    insertTrie(&trieRoot, "Ditto");
+    insertTrie(&trieRoot, "Raspberry");
+    insertTrie(&trieRoot, "RaspberryPi");
+    printf("Trie Inserted\n");
+
+    if(searchTrie(trieRoot, "Dettol")){
+        printf("Dettol is in Trie\n");
+    }else{printf("Dettol Not in trie\n");}
+    deleteTrie(trieRoot, "Dettol");
+    printf("Dettol Deleted\n");
+    if(searchTrie(trieRoot, "Dettol")){
+        printf("Dettol is in Trie\n");
+    }else{printf("Dettol Not in trie\n");}
+
+    printTrie(trieRoot);
+    printf("Trie Printed\n");
+    
+    freeTrie(trieRoot);
+    printf("Trie Freed\n\n");
 
 
     printf("argc: %i\n",argc);
