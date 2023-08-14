@@ -10,6 +10,6 @@ typedef struct graph
 }graph_t;
 
 // Initialize graph
-graph_t* graphInit();
+graph_t* graphInit(void* _data);
 
 #endif
