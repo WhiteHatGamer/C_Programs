@@ -1,6 +1,8 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+#include <stdbool.h>
+
 typedef struct graph
 {
     // data as void*?
@@ -11,5 +13,8 @@ typedef struct graph
 
 // Initialize graph
 graph_t* graphInit(void* _data);
+
+// Free graph
+bool freeGraph(graph_t* node);
 
 #endif
