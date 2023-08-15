@@ -8,13 +8,15 @@ typedef struct graph
     // data as void*?
     void* data;
     // Need limited vertices that points to a node
-    struct graph* edges;
+    struct graph** edges;
+    int edgeSize;
 }graph_t;
 
 // Initialize graph
 graph_t* graphInit();
 
-bool insertGraph(graph_t* _graph, void* _data);
+// Insert data into graph
+bool insertGraph(graph_t** _graph, void* _data);
 
 // Free graph
 bool freeGraph(graph_t* node);
