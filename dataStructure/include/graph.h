@@ -12,7 +12,9 @@ typedef struct graph
 }graph_t;
 
 // Initialize graph
-graph_t* graphInit(void* _data);
+graph_t* graphInit();
+
+bool insertGraph(graph_t* _graph, void* _data);
 
 // Free graph
 bool freeGraph(graph_t* node);
