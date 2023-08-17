@@ -37,6 +37,8 @@ bool freeGraph(graph_t* node){
         freeGraph(node->edges[i]);
     }
     free(node->edges);
+    node->edges = NULL;
     free(node);
+    node = NULL;
     return true;
 }
