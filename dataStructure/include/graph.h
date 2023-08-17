@@ -18,6 +18,13 @@ graph_t* graphInit();
 // Insert data into graph
 bool insertGraph(graph_t** _graph, void* _data);
 
+// Delete from Node
+bool graphDeleteNode(graph_t** _graph, void* _data);
+
+// Search from Graph
+
+// print graph Data
+
 // Free graph
 bool freeGraph(graph_t* node);
 
