@@ -1,3 +1,6 @@
+# $(subst from,to,text)
+# $(patsubst pattern,replacement,text)
+
 OS := $(shell uname)
 ifeq ($(OS),Linux)
 	BIN_EXT := .exe
@@ -11,18 +14,28 @@ endif
 
 CC := gcc
 CFLAGS := -g -Wall -Wextra -Iinclude
+TEST_CFLAGS:= -g -Wall -Iinclude
 
-SRC_DIR := src
-OBJ_DIR := obj
-BIN_DIR := bin
+SRC_DIR   := src
+OBJ_DIR   := obj
+BIN_DIR   := bin
+LIB_DIR   := lib
+TEST_DIR  := tests
 
-SRCS := $(wildcard $(SRC_DIR)/*.c)
-OBJS := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
-BIN := $(BIN_DIR)$(PS)main$(BIN_EXT)
+MAINOBJ	:= $(OBJ_DIR)$(PS)main.o
+SRCS 	:= $(wildcard $(SRC_DIR)/*.c)
+TESTS 	:= $(wildcard $(TEST_DIR)/*.c)
+TESTBIN := $(patsubst $(TEST_DIR)/%.c, $(TEST_DIR)/bin/%, $(TESTS))
+OBJS 	:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
+BIN 	:= $(BIN_DIR)$(PS)main$(BIN_EXT)
+LIBS 	:= $(patsubst $(OBJ_DIR)/%.o, $(LIB_DIR)/lib%.a, $(filter-out $(MAINOBJ), $(OBJS)))
 
 .PHONY: all clean
 
 all: $(BIN)
+
+$(LIB_DIR)/lib%.a: $(OBJ_DIR)/%.o
+	ar -cvrs $@ $^
 
 $(BIN): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
@@ -30,14 +43,44 @@ $(BIN): $(OBJS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-run:
+$(TEST_DIR)/bin/%: $(TEST_DIR)/%.c $(LIBS)
+	$(CC) $(TEST_CFLAGS) $< $(LIBS) -o $@ -lcriterion
+
+run: $(BIN)
 	$(BIN)
 
 ifeq ($(OS),Linux)
-valgrind:
+valgrind: $(BIN)
 	valgrind --leak-check=yes -s ./$(BIN)
 endif
+
+$(BIN_DIR):
+	mkdir $0
+
+$(LIB_DIR):
+	mkdir $0
+
+$(OBJ_DIR):
+	mkdir $0
+
+$(SRC_DIR):
+	mkdir $0
+
+$(TEST_DIR):
+	mkdir $0
+
+$(TEST_DIR)/bin:
+	mkdir $0
+
+test: $(LIBS) $(TEST_DIR)/bin $(TESTBIN)
+	$(foreach test, $(TESTBIN), $(test))
+
+test-v: $(LIBS) $(TEST_DIR)/bin $(TESTBIN)
+	$(foreach test, $(TESTBIN), $(test)) --verbose
+# for test in $(TESTBIN) ; do ./$$test ; done
 
 clean:
 	$(RM) $(OBJ_DIR)$(PS)*
 	$(RM) $(BIN_DIR)$(PS)*
+	$(RM) $(LIB_DIR)$(PS)*
+	$(RM) $(TEST_DIR)$(PS)bin$(PS)*
