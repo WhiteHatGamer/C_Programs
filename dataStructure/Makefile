@@ -55,22 +55,22 @@ valgrind: $(BIN)
 endif
 
 $(BIN_DIR):
-	mkdir $0
+	mkdir $@
 
 $(LIB_DIR):
-	mkdir $0
+	mkdir $@
 
 $(OBJ_DIR):
-	mkdir $0
+	mkdir $@
 
 $(SRC_DIR):
-	mkdir $0
+	mkdir $@
 
 $(TEST_DIR):
-	mkdir $0
+	mkdir $@
 
 $(TEST_DIR)/bin:
-	mkdir $0
+	mkdir $@
 
 test: $(LIBS) $(TEST_DIR)/bin $(TESTBIN)
 	$(foreach test, $(TESTBIN), $(test))
