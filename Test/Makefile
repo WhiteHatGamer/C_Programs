@@ -46,7 +46,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 $(TEST_DIR)/bin/%: $(TEST_DIR)/%.c $(LIBS)
 	$(CC) $(TEST_CFLAGS) $< $(LIBS) -o $@ -lcriterion
 
-run: $(BIN)
+run: clean $(BIN)
 	$(BIN)
 
 ifeq ($(OS),Linux)
