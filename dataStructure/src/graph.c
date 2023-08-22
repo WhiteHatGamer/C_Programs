@@ -32,22 +32,23 @@ graphNode_t* createGraphNode(void* _data){
     return _node;
 }
 
-bool insertGraph(graph_t** _graph, void* _data){
+bool insertGraphVertex(graph_t** _graph, void* _data){
     if(*_graph==NULL){
         *_graph = graphInit();
     }
-    if((*_graph)->data == NULL){
-        (*_graph)->data = _data;
-        return true;
+    if((*_graph)->vertices == NULL){
+        (*_graph)->vertices = (graph_t**)malloc(sizeof(graphNode_t*));
+        if((*_graph)->vertices == NULL){
+            printf("Not allocated insertGraphVertex()");
     }
-    if((*_graph)->edgeSize==0){
-        (*_graph)->edges = (graph_t**)malloc(sizeof(graph_t));
     }else{
-        (*_graph)->edges = (graph_t**)realloc((*_graph)->edges, ((*_graph)->edgeSize + 1) *sizeof(graph_t));
+        (*_graph)->vertices = (graph_t**)realloc((*_graph)->vertices, ((*_graph)->vertexSize + 1) *sizeof(graphNode_t*));
+        if((*_graph)->vertices == NULL){
+            printf("Not allocated insertGraphVertex()");
+        }
     }
-    (*_graph)->edgeSize++;
-    (*_graph)->edges[(*_graph)->edgeSize-1] = graphInit();
-    (*_graph)->edges[(*_graph)->edgeSize-1]->data = _data;
+    (*_graph)->vertices[(*_graph)->vertexSize] = createGraphNode(_data);
+    (*_graph)->vertexSize++;
     return true;
 }
 
