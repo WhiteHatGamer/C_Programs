@@ -3,29 +3,29 @@
 
 #include <stdbool.h>
 
-typedef struct graph
-{
-    // data as void*?
-    void* data;
-    // Need limited vertices that points to a node
-    struct graph** edges;
-    int edgeSize;
-}graph_t;
+typedef struct graphNode graphNode_t;
+
+typedef struct graph{
+    struct graphNode** vertices;
+    int vertexSize;
+}graph_t; 
+
 
 // Initialize graph
 graph_t* graphInit();
 
 // Insert data into graph
-bool insertGraph(graph_t** _graph, void* _data);
+bool insertGraphVertex(graph_t** _graph, void* _data);
 
 // Delete from Node
-bool graphDeleteNode(graph_t** _graph, void* _data);
+bool graphDeleteNode(graphNode_t** _graph, void* _data);
 
 // Search from Graph
 
 // print graph Data
+bool printGraph(graph_t* _graph);
 
 // Free graph
-bool freeGraph(graph_t* node);
+bool freeGraph(graph_t** _graph);
 
 #endif
