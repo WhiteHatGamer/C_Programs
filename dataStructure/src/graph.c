@@ -52,16 +52,35 @@ bool insertGraphVertex(graph_t** _graph, void* _data){
     return true;
 }
 
-bool freeGraph(graph_t* node){
-    if(node==NULL){
+bool freeGraphNode(graphNode_t** _node){
+    if((*_node) == NULL){
         return false;
     }
-    for(int i=0;i<node->edgeSize;i++){
-        freeGraph(node->edges[i]);
+    if((*_node)->edgeSize == 0){
+        free((*_node));
+        (*_node) = NULL;
+        return true;
+    }else{
+        free((*_node)->edges);
+        (*_node)->edges = NULL;
+        free((*_node));
+        (*_node) = NULL;
+        return true;
     }
-    free(node->edges);
-    node->edges = NULL;
-    free(node);
-    node = NULL;
+}
+
+bool freeGraph(graph_t** _graph){
+    if(*_graph==NULL){
+        return false;
+    }
+    for(int i=0;i<(*_graph)->vertexSize;i++){
+        freeGraphNode(&(*_graph)->vertices[i]);
+    }
+    if((*_graph)->vertices){
+        free((*_graph)->vertices);
+    }
+    (*_graph)->vertices = NULL;
+    free((*_graph));
+    (*_graph) = NULL;
     return true;
 }
