@@ -2,6 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct graphNode
+{
+    // data as void*?
+    void* data;
+    // Need limited vertices that points to a node
+    struct graphNode** edges;
+    int edgeSize;
+}graphNode_t;
+
 graph_t* graphInit(){
     graph_t* node = (graph_t*)malloc(sizeof(graph_t));
     node->data = NULL;
