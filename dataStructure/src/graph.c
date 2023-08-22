@@ -12,11 +12,24 @@ typedef struct graphNode
 }graphNode_t;
 
 graph_t* graphInit(){
-    graph_t* node = (graph_t*)malloc(sizeof(graph_t));
-    node->data = NULL;
-    node->edges = NULL;
-    node->edgeSize = 0;
-    return node;
+    graph_t* _graph = (graph_t*)malloc(sizeof(graph_t));
+    if(_graph == NULL){
+        printf("Not allocated graphInit()");
+    }
+    _graph->vertices = NULL;
+    _graph->vertexSize = 0;
+    return _graph;
+}
+
+graphNode_t* createGraphNode(void* _data){
+    graphNode_t* _node = (graphNode_t*)malloc(sizeof(graphNode_t));
+    if(_node == NULL){
+        printf("Not allocated createGraphNode()");
+    }
+    _node->data = _data;
+    _node->edges = NULL;
+    _node->edgeSize = 0;
+    return _node;
 }
 
 bool insertGraph(graph_t** _graph, void* _data){
