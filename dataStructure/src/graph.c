@@ -52,6 +52,55 @@ bool insertGraphVertex(graph_t** _graph, void* _data){
     return true;
 }
 
+
+bool addGraphNodeEdge(graphNode_t* tmpFrom,graphNode_t* tmpTo){
+    if((tmpFrom)->edges == NULL){
+        (tmpFrom)->edges = (graphNode_t**)malloc(sizeof(graphNode_t*));
+        if((tmpFrom)->edges == NULL){
+            printf("Not allocated insertGraphNodeEdge()");
+        }
+    }else{
+        for(int i=0;i<tmpFrom->edgeSize;i++){
+            if(tmpFrom->edges[i] == tmpTo){
+                // Edge Already there 
+                return false;
+            }
+        }
+        (tmpFrom)->edges = (graphNode_t**)realloc((tmpFrom)->edges, ((tmpFrom)->edgeSize + 1) *sizeof(graphNode_t*));
+        if((tmpFrom)->edges == NULL){
+            printf("Not allocated insertGraphNodeEdge()");
+        }
+    }
+    (tmpFrom)->edges[(tmpFrom)->edgeSize] = tmpTo;
+    (tmpFrom)->edgeSize++;
+    return true;
+}
+
+bool addGraphEdges(graph_t** _graph, void* _fromData, void* _toData){
+    if((*_graph) == NULL){
+        insertGraphVertex(_graph, _fromData);
+    }
+    graphNode_t* tmpFrom,* tmpTo;
+    tmpFrom = tmpTo = NULL;
+    for(int i=0;i<(*_graph)->vertexSize;i++){
+        if((*_graph)->vertices[i]->data == _fromData){
+            tmpFrom = (*_graph)->vertices[i];
+        }else if ((*_graph)->vertices[i]->data == _toData){
+            tmpTo = (*_graph)->vertices[i];
+        }
+    }
+    if(tmpFrom == NULL){
+        // Data not in graph
+        insertGraphVertex(_graph, _fromData);
+        tmpFrom = (*_graph)->vertices[(*_graph)->vertexSize-1];
+    }else if(tmpTo == NULL){
+        insertGraphVertex(_graph, _toData);
+        tmpTo = (*_graph)->vertices[(*_graph)->vertexSize-1];
+    }
+    return addGraphNodeEdge(tmpFrom, tmpTo);
+}
+
+
 bool freeGraphNode(graphNode_t** _node){
     if((*_node) == NULL){
         return false;
