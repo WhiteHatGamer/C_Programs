@@ -17,6 +17,9 @@ graph_t* graphInit();
 // Insert data into graph
 bool insertGraphVertex(graph_t** _graph, void* _data);
 
+// Add Edges for vertices
+bool addGraphEdges(graph_t** _graph, void* _fromData, void* _toData);
+
 // Delete from Node
 bool graphDeleteNode(graphNode_t** _graph, void* _data);
 
