@@ -21,7 +21,7 @@ bool insertGraphVertex(graph_t** _graph, void* _data);
 bool addGraphEdges(graph_t** _graph, void* _fromData, void* _toData);
 
 // Delete from Node
-bool graphDeleteNode(graphNode_t** _graph, void* _data);
+bool graphDeleteNode(graph_t** _graph, void* _data);
 
 // Search from Graph
 
