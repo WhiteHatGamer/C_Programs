@@ -81,7 +81,7 @@ bool searchTrie(trie_t* _root, char* _signedText){
     trie_t* tmp = _root;
     int length = strlen(_signedText);
     for(int i=0;i<length;i++){
-        if(tmp->child[text[i]==NULL]){
+        if(tmp->child[text[i]]==NULL){
             return false;
         }
         tmp = tmp->child[text[i]];
