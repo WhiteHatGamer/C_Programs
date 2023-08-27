@@ -32,7 +32,7 @@ LIBS 	:= $(patsubst $(OBJ_DIR)/%.o, $(LIB_DIR)/lib%.a, $(filter-out $(MAINOBJ), 
 
 .PHONY: all clean
 
-all: $(BIN)
+all: clean $(BIN)
 
 $(LIB_DIR)/lib%.a: $(OBJ_DIR)/%.o
 	ar -cvrs $@ $^
@@ -50,7 +50,7 @@ run: clean $(BIN)
 	$(BIN)
 
 ifeq ($(OS),Linux)
-valgrind: $(BIN)
+valgrind: all
 	valgrind --leak-check=yes -s ./$(BIN)
 endif
 
