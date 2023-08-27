@@ -25,8 +25,10 @@ bool graphDeleteNode(graphNode_t** _graph, void* _data);
 
 // Search from Graph
 
-// print graph Data
+// printing Graph Nodes with adjascent Nodes
 bool printGraph(graph_t* _graph);
+// Print Visualizable Graph just in case
+void printDigraph(graph_t* _graph);
 
 // Free graph
 bool freeGraph(graph_t** _graph);
