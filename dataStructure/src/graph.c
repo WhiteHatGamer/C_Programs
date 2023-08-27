@@ -104,6 +104,34 @@ bool addGraphEdges(graph_t** _graph, void* _fromData, void* _toData){
 }
 
 
+bool printGraphNode(graphNode_t* _node){
+    if(_node == NULL){
+        return false;
+    }
+    printf("%p\n", _node->data);
+    for(int i=0;i<_node->edgeSize;i++){
+        printf("|--->%p\n", _node->edges[i]->data);
+        // printGraphNode(_node->edges[i]);
+    }
+    return true;
+}
+
+bool printGraph(graph_t* _graph){
+    if(_graph == NULL){
+        return false;
+    }
+    printf("\n---------------------------------\n");
+    for(int i=0;i<_graph->vertexSize;i++){
+        printGraphNode(_graph->vertices[i]);
+    }
+    printf("\n---------------------------------\n");
+    // if(printGraphRec(_graph, 0)){
+    //     return true;
+    // }
+    return true;
+}
+
+
 bool freeGraphNode(graphNode_t** _node){
     if((*_node) == NULL){
         return false;
