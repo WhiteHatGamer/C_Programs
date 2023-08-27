@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <limits.h>
 
 typedef struct Queue {
     linkedlist_t* front;
@@ -37,7 +38,7 @@ void enqueue(queue_t* _queue, int _data){
 
 int dequeue(queue_t* _queue){
     if(_queue->front==NULL){
-        return NULL;
+        return INT_MIN;
     }
     if(_queue->front == _queue->rear){
         _queue->rear = NULL;
