@@ -132,6 +132,17 @@ bool printGraph(graph_t* _graph){
 }
 
 
+void printDigraph(graph_t* _graph){
+    printf("digraph {\n");
+    for(int i=0;i<_graph->vertexSize;i++){
+        for(int j=0;j<_graph->vertices[i]->edgeSize;j++){
+            printf("\"%p\" -> \"%p\";\n", _graph->vertices[i]->data, _graph->vertices[i]->edges[j]->data);
+        }
+    }
+    printf("}\n");
+}
+
+
 bool freeGraphNode(graphNode_t** _node){
     if((*_node) == NULL){
         return false;
