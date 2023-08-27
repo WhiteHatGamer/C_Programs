@@ -43,7 +43,7 @@ bool insertGraphVertex(graph_t** _graph, void* _data){
         (*_graph)->vertices = (graphNode_t**)malloc(sizeof(graphNode_t*));
         if((*_graph)->vertices == NULL){
             printf("Not allocated insertGraphVertex()");
-    }
+        }
     }else{
         (*_graph)->vertices = (graphNode_t**)realloc((*_graph)->vertices, ((*_graph)->vertexSize + 1) *sizeof(graphNode_t*));
         if((*_graph)->vertices == NULL){
