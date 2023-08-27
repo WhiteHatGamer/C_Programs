@@ -104,6 +104,71 @@ bool addGraphEdges(graph_t** _graph, void* _fromData, void* _toData){
 }
 
 
+bool graphDeleteNode(graph_t** _graph, void* _data){
+    if((*_graph)==NULL){
+        return false;
+    }
+    bool deleted = false;
+    if ((*_graph)->vertexSize == 0){
+        // check if graph has vertices
+        errno = EINVAL;
+        perror("ERROR");
+        return false;
+    }
+    graphNode_t* tmp = NULL;
+    for(int i=0;i<(*_graph)->vertexSize;i++){
+        if((*_graph)->vertices[i]->data == _data){
+            // delete fro graph structure
+            tmp = (*_graph)->vertices[i];
+            deleted = freeGraphNode(&(*_graph)->vertices[i]);
+            //  found node
+            // shift left dynamic array
+            for(int j=i;j<(*_graph)->vertexSize-1;j++){
+
+                (*_graph)->vertices[j] = (*_graph)->vertices[j+1];
+            }
+            // realloc smaller size
+            (*_graph)->vertexSize--;
+            (*_graph)->vertices = (graphNode_t**)realloc((*_graph)->vertices, ((*_graph)->vertexSize) *sizeof(graphNode_t*));
+            break;
+        }
+    }
+    if (deleted){
+        for(int i=0;i<(*_graph)->vertexSize;i++){
+            for(int j=0;j<(*_graph)->vertices[i]->edgeSize;j++){
+                if((*_graph)->vertices[i]->edges[j] == tmp){
+                    for(int k=j;k<(*_graph)->vertices[i]->edgeSize-1;k++){
+                        (*_graph)->vertices[i]->edges[k] = (*_graph)->vertices[i]->edges[k-1];
+                    }
+                    // realloc smaller size
+                    (*_graph)->vertices[i]->edgeSize--;
+                    (*_graph)->vertices[i]->edges = (graphNode_t**)realloc(
+                        (*_graph)->vertices[i]->edges,
+                        ((*_graph)->vertices[i]->edgeSize) *sizeof(graphNode_t*)
+                    );
+                    break;
+                }
+            }
+        }
+        return true;
+    }
+    return false;
+    // Commented Since Graph Struct has Location of every vertices(Needed else)
+    // // check if any vertex has edge to deleting node
+    // }else{
+    //     // if vertices check if that vertex has edges 
+    //     for(int i=0;i<(*_graph)->vertexSize;i++){
+    //         if (((*_graph)->vertices[i]->edgeSize == 0) && ((*_graph)->vertices[i]->data == NULL)){
+    //             // if not then delete that node too (But logic incorrect memory leak may occur)
+    //             // graphDeleteNode(&(*_graph)->vertices[i], NULL);
+    //             // freeGraph(&(*_graph)->edges[i]);
+    //         }
+    //         // if edges then no delete e
+    //     }
+    // }
+}
+
+
 bool printGraphNode(graphNode_t* _node){
     if(_node == NULL){
         return false;
