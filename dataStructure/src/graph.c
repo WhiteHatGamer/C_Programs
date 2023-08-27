@@ -1,6 +1,7 @@
 #include "graph.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 
 typedef struct graphNode
 {
@@ -10,6 +11,8 @@ typedef struct graphNode
     struct graphNode** edges;
     int edgeSize;
 }graphNode_t;
+
+bool freeGraphNode(graphNode_t** _node);
 
 graph_t* graphInit(){
     graph_t* _graph = (graph_t*)malloc(sizeof(graph_t));
