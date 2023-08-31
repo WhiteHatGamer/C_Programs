@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "linkedList.h"
+#include "intLinkedList.h"
 #include "binaryTree.h"
 #include "person.h"
 #include "hashTable.h"
-#include "queue.h"
+#include "intQueue.h"
 #include "stack.h"
 #include "bitFields.h"
 #include "trie.h"
 
 void cleanupFunction(){
     atexit(freeBitfield);
-    atexit(freeLinkedList);
-    atexit(freeQueue);
+    atexit(IntLLFree);
+    atexit(intQFree);
     atexit(freeStack);
     atexit(freeTree);
     atexit(freeTrie);
@@ -32,50 +32,51 @@ int main(int argc, char** argv){
     atexit(cleanupFunction);
 
     // Create New Node
-    linkedlist_t* Head = createNode(999);
+    intlinkedlist_t* Head = IntLLCreateNode(999);
 
     // Insert New Node
     for (int i = 0; i < 15; i++)
     {
-        Head = insertHead(Head, i);
+        Head = IntLLInsertHead(Head, i);
     }
     
     // Printing whole List
     printf("\nInsertHead");
-    PrintList(Head);
+    IntLLDisplay(Head);
 
     // Inserting in the beginning/somewhere
-    linkedlist_t* l4 = (linkedlist_t*)malloc(sizeof(linkedlist_t));
+    intlinkedlist_t* l4 = (intlinkedlist_t*)malloc(sizeof(intlinkedlist_t));
     l4->data = 4;
     l4->next = Head;
     Head = l4;
     printf("\nInsertnorml");
-    PrintList(Head);
+    IntLLDisplay(Head);
 
     // Deleting a node from beggining
-    deleteHead(&Head);
+    IntLLDeleteHead(&Head);
     printf("\ndeleteHead");
-    PrintList(Head);
+    IntLLDisplay(Head);
 
     for (int i=15; i<25; i++){
-        insertEnd(Head, i);
+        IntLLInsertEnd(Head, i);
     }
     printf("\nInsertend");
-    PrintList(Head);
+    IntLLDisplay(Head);
 
-    printf("Node 999 found: %i\n",findNode(Head, 999));
-    deleteNode(Head, 999);
-    printf("Node 999 found: %i\n",findNode(Head, 999));
+    printf("Node 999 found: %i\n",IntLLFindNode(Head, 999));
+    IntLLDeleteNode(Head, 999);
+    printf("Node 999 found: %i\n",IntLLFindNode(Head, 999));
 
-    insertIndex(Head, 9999, 5);
+    IntLLInsertIndex(Head, 9999, 5);
     printf("\nInserindex");
-    PrintList(Head);
+    IntLLDisplay(Head);
 
-    updateNode(Head, 9999, 999);
+    IntLLUpdateNode(Head, 9999, 999);
     printf("\nInsertHead");
-    PrintList(Head);
+    IntLLDisplay(Head);
+    printf("LL Printed size: %lu\n", sizeof(Head));
 
-    freeLinkedList(Head);
+    IntLLFree(Head);
     printf("List Freed\n\n");
 
 
@@ -159,26 +160,27 @@ int main(int argc, char** argv){
     printHashTable();
 
 
-    queue_t* queue = initQueue();
+    intqueue_t* queue = intQInit();
 
     for(int i=0;i<25;i++){
-        enqueue(queue, i);
+        intQEnqueue(queue, i);
     }
-    qPrint(queue);
+    intQDisplay(queue);
+    printf("Queue Printed size: %lu\n", sizeof(queue));
 
-    dequeue(queue);
-    qPrint(queue);
+    intQDequeue(queue);
+    intQDisplay(queue);
     for(int i=0;i<25;i++){
-        dequeue(queue);
+        intQDequeue(queue);
     }
 
-    qPrint(queue);
-    if (qIsEmpty(queue))
+    intQDisplay(queue);
+    if (intQIsEmpty(queue))
     {
         printf("Queue is Empty");
     }
 
-    freeQueue(queue);
+    intQFree(queue);
     printf("\nQueue Freed\n");
     
 
