@@ -1,5 +1,5 @@
 #include "binaryTree.h"
-#include "queue.h"
+#include "intQueue.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -72,9 +72,9 @@ binarytree_t* btNodeBFS(binarytree_t* _root, int _data, BFS_Operation options){
         return NULL;
     }
     int value;
-    queue_t* _queue = initQueue();
+    intqueue_t* _queue = intQInit();
     binarytree_t* _branch = _root;
-    enqueue(_queue, _root->data);
+    intQEnqueue(_queue, _root->data);
     int i = 1, childSize = 10;
     int* child = (int*)malloc(childSize*sizeof(int));
     if (!child){
@@ -86,14 +86,14 @@ binarytree_t* btNodeBFS(binarytree_t* _root, int _data, BFS_Operation options){
     if(options & BFS_PRINT){
         printf("[ [ ");
     }
-    while (!qIsEmpty(_queue)){
+    while (!intQIsEmpty(_queue)){
         if(i>childSize-2){
             childSize++;
             child = realloc(child, childSize*sizeof(int));
             child[childSize-1] = -1;
         }
         if(child[i]==-1){child[i]=0;}
-        value = dequeue(_queue);
+        value = intQDequeue(_queue);
         child[i]--;
         _branch = btSearchNodeDFS(_root, value);
         if(options & BFS_SEARCH)
@@ -103,7 +103,7 @@ binarytree_t* btNodeBFS(binarytree_t* _root, int _data, BFS_Operation options){
                 if(options & BFS_PRINT){printf("\n");}
                 printf("Data Found at Distance %i : %d\n",i , _data);
                 free(child);
-                freeQueue(_queue);
+                intQFree(_queue);
                 return _branch;
             }   
         }
@@ -111,11 +111,11 @@ binarytree_t* btNodeBFS(binarytree_t* _root, int _data, BFS_Operation options){
             printf("%d ",_branch->data);
         }
         if(_branch->left != NULL){
-            enqueue(_queue, _branch->left->data);
+            intQEnqueue(_queue, _branch->left->data);
             child[i+1]++;
         }
         if(_branch->right != NULL){
-            enqueue(_queue, _branch->right->data);
+            intQEnqueue(_queue, _branch->right->data);
             child[i+1]++;
         }
         if(child[i] == -1){
@@ -132,7 +132,7 @@ binarytree_t* btNodeBFS(binarytree_t* _root, int _data, BFS_Operation options){
         printf("]\n");
     }
     free(child);
-    freeQueue(_queue);
+    intQFree(_queue);
     return NULL;
 }
 
