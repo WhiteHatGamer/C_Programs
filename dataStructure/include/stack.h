@@ -3,10 +3,10 @@
 
 #define STACK_MAX_SIZE 5
 
-#include "linkedList.h"
+#include "intLinkedList.h"
 
 typedef struct Stack{
-    linkedlist_t* top;
+    intlinkedlist_t* top;
 }stack_t;
 
 // Initialize stack

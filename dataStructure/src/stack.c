@@ -1,5 +1,5 @@
 #include "stack.h"
-#include "linkedList.h"
+#include "intLinkedList.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -16,10 +16,10 @@ stack_t* initStack(){
 
 void push(stack_t* _stack, int _data){
     if(_stack->top == NULL){
-        _stack->top = createNode(_data);
+        _stack->top = IntLLCreateNode(_data);
         return;
     }
-    _stack->top = insertHead(_stack->top, _data);
+    _stack->top = IntLLInsertHead(_stack->top, _data);
 }
 
 void pop(stack_t* _stack){
@@ -28,7 +28,7 @@ void pop(stack_t* _stack){
         return;
     }
     else{
-        linkedlist_t* tmp = _stack->top;
+        intlinkedlist_t* tmp = _stack->top;
         _stack->top = _stack->top->next;
         free(tmp);
         return;
@@ -37,7 +37,7 @@ void pop(stack_t* _stack){
 
 void printStack(stack_t* _stack){
     printf("\n---\n");
-    linkedlist_t* tmp = _stack->top;
+    intlinkedlist_t* tmp = _stack->top;
     while (tmp!= NULL){
         printf("%d\n",tmp->data);
         tmp = tmp->next;
@@ -47,7 +47,7 @@ void printStack(stack_t* _stack){
 }
 
 void freeStack (stack_t* _stack){
-    freeLinkedList(_stack->top);
+    IntLLFree(_stack->top);
     _stack->top = NULL;
     free(_stack);
 }
