@@ -1,44 +1,44 @@
-#ifndef LINKEDLIST_H
-#define LINKEDLIST_H
+#ifndef INT_LINKEDLIST_H
+#define INT_LINKEDLIST_H
 
-typedef struct LinkedList{
+typedef struct IntLinkedList{
     int data;
-    struct LinkedList* next;
-}linkedlist_t;
+    struct IntLinkedList* next;
+}intlinkedlist_t;
 
 #include <stdbool.h>
 
 // Display List
-void PrintList(linkedlist_t* _head);
+void IntLLDisplay(intlinkedlist_t* _head);
 
 // Create New Node
-linkedlist_t* createNode(int _data);
+intlinkedlist_t* IntLLCreateNode(int _data);
 
 // Delete a Node From Head
-void deleteHead(linkedlist_t** _head);
+void IntLLDeleteHead(intlinkedlist_t** _head);
 
 // Delete a node by value
-void deleteNode(linkedlist_t* _head, int _data);
+void IntLLDeleteNode(intlinkedlist_t* _head, int _data);
 
 // Insert at head
-linkedlist_t* insertHead(linkedlist_t* _head, int _data);
+intlinkedlist_t* IntLLInsertHead(intlinkedlist_t* _head, int _data);
 
-// Insert at End -> linkedlist_t
-void insertEnd(linkedlist_t* _head, int _data);
+// Insert at End -> intlinkedlist_t
+void IntLLInsertEnd(intlinkedlist_t* _head, int _data);
 
-// Insert a Node at an Index startin at 0 -> linkedlist_t
-void insertIndex(linkedlist_t* _head, int _data, int index);
+// Insert a Node at an Index startin at 0 -> intlinkedlist_t
+void IntLLInsertIndex(intlinkedlist_t* _head, int _data, int index);
 
 // Find Node by value -> bool
-bool findNode(linkedlist_t* _head, int _data);
+bool IntLLFindNode(intlinkedlist_t* _head, int _data);
 
 // Update Node -> int
-int updateNode(linkedlist_t* _head, int _data, int _newData);
+int IntLLUpdateNode(intlinkedlist_t* _head, int _data, int _newData);
 
-// Merge Linked List -> linkedlist_t
-linkedlist_t* mergeList(linkedlist_t* _head1, linkedlist_t* _head2);
+// Merge Linked List -> intlinkedlist_t
+intlinkedlist_t* IntLLMergeList(intlinkedlist_t* _head1, intlinkedlist_t* _head2);
 
 // Free Memory
-void freeLinkedList(linkedlist_t* _head);
+void IntLLFree(intlinkedlist_t* _head);
 
 #endif
