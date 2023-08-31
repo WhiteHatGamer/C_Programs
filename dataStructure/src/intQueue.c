@@ -1,18 +1,18 @@
-#include "queue.h"
-#include "linkedList.h"
+#include "intQueue.h"
+#include "intLinkedList.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <limits.h>
 
-typedef struct Queue {
-    linkedlist_t* front;
-    linkedlist_t* rear;
-}queue_t;
+typedef struct IntQueue {
+    intlinkedlist_t* front;
+    intlinkedlist_t* rear;
+}intqueue_t;
 
-queue_t* initQueue(){
-    queue_t* q = (queue_t*)malloc(sizeof(queue_t));
+intqueue_t* intQInit(){
+    intqueue_t* q = (intqueue_t*)malloc(sizeof(intqueue_t));
     if (q == NULL){
         // malloc failed 
         return NULL;
@@ -21,8 +21,8 @@ queue_t* initQueue(){
     return q;
 }
 
-void enqueue(queue_t* _queue, int _data){
-    linkedlist_t* tmp = createNode(_data);
+void intQEnqueue(intqueue_t* _queue, int _data){
+    intlinkedlist_t* tmp = IntLLCreateNode(_data);
     if (tmp == NULL){
         // malloc failed 
         return;
@@ -36,7 +36,7 @@ void enqueue(queue_t* _queue, int _data){
     return;
 }
 
-int dequeue(queue_t* _queue){
+int intQDequeue(intqueue_t* _queue){
     if(_queue->front==NULL){
         return INT_MIN;
     }
@@ -44,13 +44,13 @@ int dequeue(queue_t* _queue){
         _queue->rear = NULL;
     }
     int tmp = _queue->front->data;
-    deleteHead(&(_queue->front));
+    IntLLDeleteHead(&(_queue->front));
     return tmp;
 }
 
-void qPrint(queue_t* _queue){
+void intQDisplay(intqueue_t* _queue){
     printf("\nFront: ");
-    linkedlist_t *tmp = _queue->front;
+    intlinkedlist_t *tmp = _queue->front;
 
     while(tmp != NULL){
         printf("%d <- ", tmp->data);
@@ -60,25 +60,25 @@ void qPrint(queue_t* _queue){
     return;
 }
 
-void qFront(queue_t* _queue){
+void intQFront(intqueue_t* _queue){
     printf("Queue Front: %i",_queue->front->data);
     return;
 }
 
-void qRear(queue_t* _queue){
+void intQRear(intqueue_t* _queue){
     printf("Queue Rear: %i",_queue->rear->data);
     return;
 }
 
-bool qIsEmpty(queue_t* _queue){
+bool intQIsEmpty(intqueue_t* _queue){
     if (_queue->front == NULL){
         return true;
     }
     return false;
 }
 
-void freeQueue(queue_t* _queue){
-    freeLinkedList(_queue->front);
+void intQFree(intqueue_t* _queue){
+    IntLLFree(_queue->front);
     _queue->front = NULL;
     _queue->rear = NULL;
     free(_queue);
