@@ -1,10 +1,10 @@
-#include "linkedList.h"
+#include "intLinkedList.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 // Display List\Traversal
-void PrintList(linkedlist_t* _head){
-    linkedlist_t *tmp = _head;
+void IntLLDisplay(intlinkedlist_t* _head){
+    intlinkedlist_t *tmp = _head;
 
     while(tmp != NULL){
         printf("%d -> ", tmp->data);
@@ -14,8 +14,8 @@ void PrintList(linkedlist_t* _head){
 }
 
 // Create New Node
-linkedlist_t* createNode(int _data){
-    linkedlist_t* result = (linkedlist_t*)malloc(sizeof(linkedlist_t));
+intlinkedlist_t* IntLLCreateNode(int _data){
+    intlinkedlist_t* result = (intlinkedlist_t*)malloc(sizeof(intlinkedlist_t));
     if (result != NULL){
         result->data = _data;
         result->next = NULL;
@@ -28,22 +28,22 @@ linkedlist_t* createNode(int _data){
 }
 
 // Delete a node from the beginning
-void deleteHead(linkedlist_t** _head){
+void IntLLDeleteHead(intlinkedlist_t** _head){
     if(*_head != NULL){
-        linkedlist_t* tmp = *_head;
+        intlinkedlist_t* tmp = *_head;
         *_head = (*_head)->next;
         free(tmp);
     }
 }
 
 // Delete a node by Value
-void deleteNode(linkedlist_t* _head, int _data){
-    if (findNode(_head, _data)){
-        linkedlist_t* tmp = _head;
+void IntLLDeleteNode(intlinkedlist_t* _head, int _data){
+    if (IntLLFindNode(_head, _data)){
+        intlinkedlist_t* tmp = _head;
         while(tmp!=NULL){
             if ((tmp->next)->data == _data)
             {
-                deleteHead(&(tmp->next));
+                IntLLDeleteHead(&(tmp->next));
                 return;
             }
             tmp = tmp->next;
@@ -53,27 +53,27 @@ void deleteNode(linkedlist_t* _head, int _data){
 }
 
 // Insert at head
-linkedlist_t* insertHead(linkedlist_t* _head, int _data){
-    linkedlist_t* tmp = createNode(_data);
+intlinkedlist_t* IntLLInsertHead(intlinkedlist_t* _head, int _data){
+    intlinkedlist_t* tmp = IntLLCreateNode(_data);
     tmp->next = _head;
     _head = tmp;
     return tmp;
 }
 
 // Insert at end
-void insertEnd(linkedlist_t* _head, int _data){
-    linkedlist_t* tmp = _head;
+void IntLLInsertEnd(intlinkedlist_t* _head, int _data){
+    intlinkedlist_t* tmp = _head;
     while ((tmp->next) != NULL)
     {
         tmp = tmp->next;
     }
-    tmp->next = createNode(_data);
+    tmp->next = IntLLCreateNode(_data);
     return;
 }
 
 // Insert a Node at an Index startin at 0
-void insertIndex(linkedlist_t* _head, int _data, int index){
-    linkedlist_t* tmp = _head;
+void IntLLInsertIndex(intlinkedlist_t* _head, int _data, int index){
+    intlinkedlist_t* tmp = _head;
     int current = 2; //because adding to previous node
     if (index<0){
         printf("Negative Indexing not yet supported");
@@ -88,15 +88,15 @@ void insertIndex(linkedlist_t* _head, int _data, int index){
         current++;
         tmp = tmp->next;
     }
-    linkedlist_t* temp = createNode(_data);
+    intlinkedlist_t* temp = IntLLCreateNode(_data);
     temp->next = tmp->next;
     tmp->next = temp;
     return;
 }
 
 // Find a Node
-bool findNode(linkedlist_t* _head, int _data){
-    linkedlist_t *tmp = _head;
+bool IntLLFindNode(intlinkedlist_t* _head, int _data){
+    intlinkedlist_t *tmp = _head;
 
     while (tmp != NULL)
     {
@@ -109,8 +109,8 @@ bool findNode(linkedlist_t* _head, int _data){
 }
 
 // Update a Node
-int updateNode(linkedlist_t* _head, int _data, int _newData){
-    linkedlist_t* tmp = _head;
+int IntLLUpdateNode(intlinkedlist_t* _head, int _data, int _newData){
+    intlinkedlist_t* tmp = _head;
     while (tmp != NULL)
     {
         if (tmp->data == _data){
@@ -123,8 +123,8 @@ int updateNode(linkedlist_t* _head, int _data, int _newData){
 }
 
 // Merge two Linked List
-linkedlist_t* mergeList(linkedlist_t* _head1, linkedlist_t* _head2){
-    linkedlist_t* tmp = _head1;
+intlinkedlist_t* IntLLMergeList(intlinkedlist_t* _head1, intlinkedlist_t* _head2){
+    intlinkedlist_t* tmp = _head1;
     while (tmp != NULL)
     {
         tmp = tmp->next;
@@ -134,9 +134,9 @@ linkedlist_t* mergeList(linkedlist_t* _head1, linkedlist_t* _head2){
 }
 
 // Delete/Free Memory
-void freeLinkedList(linkedlist_t* _head){
-    linkedlist_t* current = _head;
-    linkedlist_t* next;
+void IntLLFree(intlinkedlist_t* _head){
+    intlinkedlist_t* current = _head;
+    intlinkedlist_t* next;
     while (current != NULL)
     {
         next = current->next;
