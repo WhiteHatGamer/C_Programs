@@ -1,32 +1,32 @@
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef INT_QUEUE_H
+#define INT_QUEUE_H
 
-#include "linkedList.h"
+#include "intLinkedList.h"
 
-typedef struct Queue queue_t;
+typedef struct IntQueue intqueue_t;
 
 // Initialize a New Queue
-queue_t* initQueue();
+intqueue_t* intQInit();
 
 // Insert a data into queue : Enqueue
-void enqueue(queue_t* _queue, int _data);
+void intQEnqueue(intqueue_t* _queue, int _data);
 
-// Delete/dequeue from Queue
-int dequeue(queue_t* _queue);
+// Delete/intQDequeue from Queue
+int intQDequeue(intqueue_t* _queue);
 
 // Prints the Queue
-void qPrint(queue_t* _queue);
+void intQDisplay(intqueue_t* _queue);
 
 // Prints Front of the queue
-void qFront(queue_t* _queue);
+void intQFront(intqueue_t* _queue);
 
 // Prints Rear of the Queue
-void qRear(queue_t* _queue);
+void intQRear(intqueue_t* _queue);
 
 // Checks Whether queue is empty
-bool qIsEmpty(queue_t* _queue);
+bool intQIsEmpty(intqueue_t* _queue);
 
 // Free every memory dinamically allocated
-void freeQueue(queue_t* _queue);
+void intQFree(intqueue_t* _queue);
 
 #endif
