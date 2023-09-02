@@ -133,3 +133,15 @@ linkedlist_t* llMerge(linkedlist_t* _head1, linkedlist_t* _head2){
     tmp = _head2;
     return _head1;
 }
+
+// Delete/Free Memory
+void llFree(linkedlist_t* _head){
+    linkedlist_t* current = _head;
+    linkedlist_t* next;
+    while (current != NULL)
+    {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+}
