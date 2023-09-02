@@ -34,3 +34,15 @@ void qEnqueue(queue_t* _queue, void* _data){
     return;
 }
 
+void* qDequeue(queue_t* _queue){
+    if(_queue->front==NULL){
+        return NULL;
+    }
+    if(_queue->front == _queue->rear){
+        _queue->rear = NULL;
+    }
+    void* tmp = _queue->front->data;
+    llDeleteHead(&(_queue->front));
+    return tmp;
+}
+
