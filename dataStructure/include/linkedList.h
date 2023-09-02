@@ -14,5 +14,6 @@ linkedlist_t* createNode(void* _data);
 // Insert at head
 linkedlist_t* insertHead(linkedlist_t* _head, void* _data);
 
+// Insert at End -> linkedlist_t
 
 #endif
