@@ -14,6 +14,9 @@ void qEnqueue(queue_t* _queue, void* _data);
 // Delete/qDequeue from Queue
 void* qDequeue(queue_t* _queue);
 
+// Prints the Queue
+void qPrint(queue_t* _queue);
+
 
 // Free every memory dinamically allocated
 void qFree(queue_t* _queue);
