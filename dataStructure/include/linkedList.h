@@ -16,6 +16,8 @@ linkedlist_t* llCreateNode(void* _data);
 // Delete a Node From Head
 void llDeleteHead(linkedlist_t** _head);
 
+// Delete a node by value
+void llDeleteNode(linkedlist_t* _head, void* _data);
 
 // Insert at head
 linkedlist_t* llInsertHead(linkedlist_t* _head, void* _data);
