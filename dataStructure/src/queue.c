@@ -19,3 +19,18 @@ queue_t* qInit(){
     return q;
 }
 
+void qEnqueue(queue_t* _queue, void* _data){
+    linkedlist_t* tmp = llCreateNode(_data);
+    if (tmp == NULL){
+        // malloc failed 
+        return;
+    }
+    if (_queue->front == NULL){
+        _queue->front = _queue->rear = tmp;
+        return;
+    }
+    _queue->rear->next = tmp;
+    _queue->rear = _queue->rear->next;
+    return;
+}
+
