@@ -76,7 +76,7 @@ int main(int argc, char** argv){
     IntLLUpdateNode(Head, 9999, 999);
     printf("\nInsertHead");
     IntLLDisplay(Head);
-    printf("LL Printed size: %lu\n", sizeof(Head));
+    printf("LL Printed size: %lu\n", sizeof(*Head));
 
     IntLLFree(Head);
     printf("List Freed\n\n");
@@ -113,6 +113,7 @@ int main(int argc, char** argv){
     btNodeBFS(Root, 1, BFS_PRINT);
     btNodeBFS(Root, 32, BFS_SEARCH);
     btNodeBFS(Root, 64, BFS_PRINT | BFS_SEARCH);
+    printf("Binary Tree Printed size: %lu\n", sizeof(*Root));
 
     freeTree(Root);
     printf("Tree Freed\n\n");
@@ -133,6 +134,7 @@ int main(int argc, char** argv){
     htInsert(person[3]);
     htInsert(person[4]);
     printHashTable();
+    printf("Hash Table Printed  size: %lu\n", sizeof(*hashTableArray));
 
     person_t* tmp = htSearchPerson("Bob");
     if (tmp==NULL){
@@ -200,6 +202,7 @@ int main(int argc, char** argv){
     pop(stack);
     pop(stack);
     printStack(stack);
+    printf("Stack Printed size: %lu\n", sizeof(*stack));
 
     freeStack(stack);
     printf("Stack Freed\n");
@@ -252,7 +255,7 @@ int main(int argc, char** argv){
     printf("\n");
     CLR_BIT(bits->bit64, 16);
     Print64Bit(bits->bit64);
-    printf("\n");
+    printf("\n size: %lu\n", sizeof(*bits));
     
     freeBitfield(bits);
     printf("BitFields Freed\n\n");
@@ -279,7 +282,7 @@ int main(int argc, char** argv){
     }else{printf("Dettol Not in trie\n");}
 
     printTrie(trieRoot);
-    printf("Trie Printed\n");
+    printf("Trie Printed size: %lu\n", sizeof(*trieRoot));
     
     freeTrie(trieRoot);
     printf("Trie Freed\n\n");
