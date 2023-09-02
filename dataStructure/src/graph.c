@@ -181,9 +181,9 @@ graphNode_t* graphSearchBFS(graph_t* _graph, void* _data){
         return result;
     }
     graphNode_t* tmp;
-    queue_t* queue = initQueue();
+    queue_t* queue = qInit();
     // enqueueing initial vertex
-    enqueue(queue, _graph->vertices[0]);
+    qEnqueue(queue, _graph->vertices[0]);
     result = _graph->vertices[0];
     // array for visited
     void* ar[_graph->vertexSize];
@@ -198,7 +198,7 @@ graphNode_t* graphSearchBFS(graph_t* _graph, void* _data){
     while (!qIsEmpty(queue)){
         // Looping till queue is empty(Means every node is traversed)
         // dequeing last enqueued pointer
-        tmp = dequeue(queue);
+        tmp = qDequeue(queue);
         // if searching need to condition here...
         if(!found && _data == tmp->data){
             // assigning result if needed to print every node
@@ -216,13 +216,13 @@ graphNode_t* graphSearchBFS(graph_t* _graph, void* _data){
                 }
             }
             if(!visited){
-                enqueue(queue, tmp->edges[i]);
+                qEnqueue(queue, tmp->edges[i]);
                 ar[visCount++] = tmp->edges[i];
             }
         }
     }
     printf("\n");
-    freeQueue(queue);
+    qFree(queue);
     return result;
 }
 
