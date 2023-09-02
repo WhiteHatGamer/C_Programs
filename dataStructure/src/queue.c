@@ -74,3 +74,10 @@ bool qIsEmpty(queue_t* _queue){
     }
     return false;
 }
+
+void qFree(queue_t* _queue){
+    llFree(_queue->front);
+    _queue->front = NULL;
+    _queue->rear = NULL;
+    free(_queue);
+}
