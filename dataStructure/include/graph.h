@@ -24,6 +24,7 @@ bool addGraphEdges(graph_t** _graph, void* _fromData, void* _toData);
 bool graphDeleteNode(graph_t** _graph, void* _data);
 
 // Search from Graph
+graphNode_t* graphSearchBFS(graph_t* _graph, void* _data);
 
 // printing Graph Nodes with adjascent Nodes
 bool printGraph(graph_t* _graph);
