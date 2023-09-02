@@ -7,4 +7,8 @@ typedef struct LinkedList{
 }linkedlist_t;
 
 
+// Create New Node
+linkedlist_t* createNode(void* _data);
+
+
 #endif
