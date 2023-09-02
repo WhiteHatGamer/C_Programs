@@ -37,3 +37,19 @@ void llDeleteHead(linkedlist_t** _head){
     }
 }
 
+// Delete a node by Value
+void llDeleteNode(linkedlist_t* _head, void* _data){
+    if (llFindNode(_head, _data)){
+        linkedlist_t* tmp = _head;
+        while(tmp!=NULL){
+            if ((tmp->next)->data == _data)
+            {
+                llDeleteHead(&(tmp->next));
+                return;
+            }
+            tmp = tmp->next;
+        }
+    }
+    return;
+}
+
