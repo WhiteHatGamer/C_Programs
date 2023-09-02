@@ -27,3 +27,13 @@ linkedlist_t* llCreateNode(void* _data){
     }
     return result;
 }
+
+// Delete a node from the beginning
+void llDeleteHead(linkedlist_t** _head){
+    if(*_head != NULL){
+        linkedlist_t* tmp = *_head;
+        *_head = (*_head)->next;
+        free(tmp);
+    }
+}
+
