@@ -72,3 +72,25 @@ void llInsertEnd(linkedlist_t* _head, void* _data){
     return;
 }
 
+// Insert a Node at an Index startin at 0
+void llInsertIndex(linkedlist_t* _head, void* _data, int index){
+    linkedlist_t* tmp = _head;
+    int current = 2; //because adding to previous node
+    if (index<0){
+        printf("Negative Indexing not yet supported");
+        return;
+    }
+    while (current < index)
+    {
+        if (tmp == NULL){
+            printf("Index Out of Bound...\n");
+            return;
+        }
+        current++;
+        tmp = tmp->next;
+    }
+    linkedlist_t* temp = llCreateNode(_data);
+    temp->next = tmp->next;
+    tmp->next = temp;
+    return;
+}
