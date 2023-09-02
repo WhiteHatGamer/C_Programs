@@ -63,3 +63,8 @@ void qFront(queue_t* _queue){
     return;
 }
 
+void qRear(queue_t* _queue){
+    printf("Queue Rear: %p",_queue->rear->data);
+    return;
+}
+
