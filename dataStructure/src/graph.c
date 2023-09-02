@@ -1,5 +1,7 @@
 #include "graph.h"
+#include "queue.h"
 #include <stdio.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <errno.h>
 
@@ -166,6 +168,62 @@ bool graphDeleteNode(graph_t** _graph, void* _data){
     //         // if edges then no delete e
     //     }
     // }
+}
+
+
+graphNode_t* graphSearchBFS(graph_t* _graph, void* _data){
+    // result if implementing search
+    graphNode_t* result = NULL;
+    if(_graph == NULL || _graph->vertexSize==0){
+        // NULL Graph or no vertices
+        errno = EINVAL;
+        perror("ERROR: ");
+        return result;
+    }
+    graphNode_t* tmp;
+    queue_t* queue = initQueue();
+    // enqueueing initial vertex
+    enqueue(queue, _graph->vertices[0]);
+    result = _graph->vertices[0];
+    // array for visited
+    void* ar[_graph->vertexSize];
+    for (int i = 0; i < _graph->vertexSize; i++){
+        ar[i] = NULL;
+    }
+    bool visited;
+    bool found = false;
+    int visCount = 1;
+    ar[0] = _graph->vertices[0];
+    // wont work for disjoint graph sets else need to iterate all the vertices
+    while (!qIsEmpty(queue)){
+        // Looping till queue is empty(Means every node is traversed)
+        // dequeing last enqueued pointer
+        tmp = dequeue(queue);
+        // if searching need to condition here...
+        if(!found && _data == tmp->data){
+            // assigning result if needed to print every node
+            found = true;
+            result = tmp;
+        }
+        printf("-> %p ", tmp->data);
+        for(int i=0;i<tmp->edgeSize;i++){
+            visited = false;
+            // if(tmp->edges[i] !in visited)
+            for(int j=0;j<_graph->vertexSize;j++){
+                if(ar[j] == tmp->edges[i]){
+                    visited = true;
+                    break;
+                }
+            }
+            if(!visited){
+                enqueue(queue, tmp->edges[i]);
+                ar[visCount++] = tmp->edges[i];
+            }
+        }
+    }
+    printf("\n");
+    freeQueue(queue);
+    return result;
 }
 
 
