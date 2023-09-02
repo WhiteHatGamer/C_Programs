@@ -4,3 +4,7 @@
 #include <stdbool.h>
 
 typedef struct Queue queue_t;
+
+// Initialize a New Queue
+queue_t* qInit();
+
