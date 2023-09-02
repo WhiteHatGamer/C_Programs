@@ -3,6 +3,16 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+// Display List\Traversal
+void llDisplay(linkedlist_t* _head){
+    linkedlist_t *tmp = _head;
+
+    while(tmp != NULL){
+        printf("%p -> ", tmp->data);
+        tmp = tmp->next;
+    }
+    printf("\n");
+}
 
 // Create New Node
 linkedlist_t* llCreateNode(void* _data){
