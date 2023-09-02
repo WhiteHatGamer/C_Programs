@@ -21,4 +21,7 @@ void insertEnd(linkedlist_t* _head, void* _data);
 void insertIndex(linkedlist_t* _head, void* _data, int index);
 
 
+// Free Memory
+void freeLinkedList(linkedlist_t* _head);
+
 #endif
