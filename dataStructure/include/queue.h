@@ -11,3 +11,7 @@ queue_t* qInit();
 // Insert a data into queue : qEnqueue
 void qEnqueue(queue_t* _queue, void* _data);
 
+// Free every memory dinamically allocated
+void qFree(queue_t* _queue);
+
+#endif
