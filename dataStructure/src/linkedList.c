@@ -61,3 +61,14 @@ linkedlist_t* llInsertHead(linkedlist_t* _head, void* _data){
     return tmp;
 }
 
+// Insert at end
+void llInsertEnd(linkedlist_t* _head, void* _data){
+    linkedlist_t* tmp = _head;
+    while ((tmp->next) != NULL)
+    {
+        tmp = tmp->next;
+    }
+    tmp->next = llCreateNode(_data);
+    return;
+}
+
