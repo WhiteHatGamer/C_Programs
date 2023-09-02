@@ -9,6 +9,7 @@
 #include "stack.h"
 #include "bitFields.h"
 #include "trie.h"
+#include "graph.h"
 
 void cleanupFunction(){
     atexit(freeBitfield);
@@ -17,6 +18,7 @@ void cleanupFunction(){
     atexit(freeStack);
     atexit(freeTree);
     atexit(freeTrie);
+    atexit(freeGraph);
 }
 
 void sleep(int ms){
@@ -281,6 +283,46 @@ int main(int argc, char** argv){
     
     freeTrie(trieRoot);
     printf("Trie Freed\n\n");
+
+
+    graph_t* graph = graphInit();
+
+    int ar[5] = {0,1,2,3,4};
+    insertGraphVertex(&graph, &ar[0]);
+    insertGraphVertex(&graph, &ar[1]);
+    insertGraphVertex(&graph, &ar[2]);
+    insertGraphVertex(&graph, &ar[3]);
+    if(insertGraphVertex(&graph, &ar[4])){
+        printf("Graph Filled\nReference:\n0->%p\n1->%p\n2->%p\n3->%p\n4->%p\n", &ar[0], &ar[1], &ar[2], &ar[3], &ar[4]);
+    }
+
+    addGraphEdges(&graph, &ar[0], &ar[1]);
+    addGraphEdges(&graph, &ar[0], &ar[4]);
+    addGraphEdges(&graph, &ar[4], &ar[0]);
+    addGraphEdges(&graph, &ar[1], &ar[4]);
+    addGraphEdges(&graph, &ar[1], &ar[3]);
+    addGraphEdges(&graph, &ar[1], &ar[2]);
+    addGraphEdges(&graph, &ar[2], &ar[3]);
+    if(addGraphEdges(&graph, &ar[3], &ar[4])){
+        printf("Edges Added\n");
+    }
+
+    if(graphDeleteNode(&graph, &ar[2])){
+        printf("Graph Node Deleted\n");
+    }
+
+    printDigraph(graph);
+    if(printGraph(graph)){
+        printf("Graph Printed\n");
+    }
+
+    graphSearchBFS(graph, NULL);
+    printf("GRAPH BFS\n");
+    
+    printf("Graph Initialized size: %lu\n", sizeof(*graph));
+    if(freeGraph(&graph)){
+        printf("Graph Freed\n\n");
+    }
 
 
     printf("argc: %i\n",argc);
