@@ -68,3 +68,9 @@ void qRear(queue_t* _queue){
     return;
 }
 
+bool qIsEmpty(queue_t* _queue){
+    if (_queue->front == NULL){
+        return true;
+    }
+    return false;
+}
