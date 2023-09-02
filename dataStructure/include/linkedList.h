@@ -13,6 +13,9 @@ void llDisplay(linkedlist_t* _head);
 // Create New Node
 linkedlist_t* llCreateNode(void* _data);
 
+// Delete a Node From Head
+void llDeleteHead(linkedlist_t** _head);
+
 
 // Insert at head
 linkedlist_t* llInsertHead(linkedlist_t* _head, void* _data);
