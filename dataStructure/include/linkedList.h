@@ -36,7 +36,7 @@ bool llFindNode(linkedlist_t* _head, void* _data);
 bool llUpdateNode(linkedlist_t* _head, void* _data, void* _newData);
 
 // Merge Linked List -> linkedlist_t
-linkedlist_t* llMerge(linkedlist_t* _head1, linkedlist_t* _head2);
+linkedlist_t* llMergeList(linkedlist_t* _head1, linkedlist_t* _head2);
 
 // Free Memory
 void llFree(linkedlist_t* _head);

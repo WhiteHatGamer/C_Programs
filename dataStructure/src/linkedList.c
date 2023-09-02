@@ -123,3 +123,13 @@ bool llUpdateNode(linkedlist_t* _head, void* _data, void* _newData){
     return false;
 }
 
+// Merge two Linked List
+linkedlist_t* llMerge(linkedlist_t* _head1, linkedlist_t* _head2){
+    linkedlist_t* tmp = _head1;
+    while (tmp != NULL)
+    {
+        tmp = tmp->next;
+    }
+    tmp = _head2;
+    return _head1;
+}
