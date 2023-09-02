@@ -20,6 +20,9 @@ void qPrint(queue_t* _queue);
 // Prints Front of the queue
 void qFront(queue_t* _queue);
 
+// Prints Rear of the Queue
+void qRear(queue_t* _queue);
+
 
 // Free every memory dinamically allocated
 void qFree(queue_t* _queue);
