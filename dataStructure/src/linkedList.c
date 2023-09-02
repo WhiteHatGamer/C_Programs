@@ -94,3 +94,18 @@ void llInsertIndex(linkedlist_t* _head, void* _data, int index){
     tmp->next = temp;
     return;
 }
+
+// Find a Node
+bool llFindNode(linkedlist_t* _head, void* _data){
+    linkedlist_t *tmp = _head;
+
+    while (tmp != NULL)
+    {
+        if(tmp->data == _data){
+            return true;
+        }
+        tmp = tmp->next;
+    }
+    return false;
+}
+
