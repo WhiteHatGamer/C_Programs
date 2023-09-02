@@ -58,3 +58,8 @@ void qPrint(queue_t* _queue){
     return;
 }
 
+void qFront(queue_t* _queue){
+    printf("Queue Front: %p",_queue->front->data);
+    return;
+}
+
