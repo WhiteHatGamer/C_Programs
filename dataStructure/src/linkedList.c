@@ -109,3 +109,17 @@ bool llFindNode(linkedlist_t* _head, void* _data){
     return false;
 }
 
+// Update a Node
+bool llUpdateNode(linkedlist_t* _head, void* _data, void* _newData){
+    linkedlist_t* tmp = _head;
+    while (tmp != NULL)
+    {
+        if (tmp->data == _data){
+            tmp->data = _newData;
+            return true;
+        }
+        tmp=tmp->next;
+    }
+    return false;
+}
+
