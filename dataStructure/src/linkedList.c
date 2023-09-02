@@ -53,3 +53,11 @@ void llDeleteNode(linkedlist_t* _head, void* _data){
     return;
 }
 
+// Insert at head
+linkedlist_t* llInsertHead(linkedlist_t* _head, void* _data){
+    linkedlist_t* tmp = llCreateNode(_data);
+    tmp->next = _head;
+    _head = tmp;
+    return tmp;
+}
+
