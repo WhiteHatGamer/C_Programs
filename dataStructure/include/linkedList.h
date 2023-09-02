@@ -29,6 +29,9 @@ void llInsertEnd(linkedlist_t* _head, void* _data);
 void llInsertIndex(linkedlist_t* _head, void* _data, int index);
 
 
+// Update Node -> void*
+bool llUpdateNode(linkedlist_t* _head, void* _data, void* _newData);
+
 // Merge Linked List -> linkedlist_t
 linkedlist_t* llMerge(linkedlist_t* _head1, linkedlist_t* _head2);
 
