@@ -6,6 +6,7 @@ typedef struct LinkedList{
     struct LinkedList* next;
 }linkedlist_t;
 
+#include <stdbool.h>
 
 // Display List
 void llDisplay(linkedlist_t* _head);
@@ -28,6 +29,8 @@ void llInsertEnd(linkedlist_t* _head, void* _data);
 // Insert a Node at an Index startin at 0 -> linkedlist_t
 void llInsertIndex(linkedlist_t* _head, void* _data, int index);
 
+// Find Node by value -> bool
+bool llFindNode(linkedlist_t* _head, void* _data);
 
 // Update Node -> void*
 bool llUpdateNode(linkedlist_t* _head, void* _data, void* _newData);
