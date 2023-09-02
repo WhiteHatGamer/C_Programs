@@ -7,6 +7,9 @@ typedef struct LinkedList{
 }linkedlist_t;
 
 
+// Display List
+void llDisplay(linkedlist_t* _head);
+
 // Create New Node
 linkedlist_t* llCreateNode(void* _data);
 
