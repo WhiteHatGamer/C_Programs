@@ -4,7 +4,7 @@
 #include "intLinkedList.h"
 #include "binaryTree.h"
 #include "person.h"
-#include "hashTable.h"
+#include "personHashTable.h"
 #include "intQueue.h"
 #include "stack.h"
 #include "bitFields.h"
@@ -119,8 +119,8 @@ int main(int argc, char** argv){
     printf("Tree Freed\n\n");
 
 
-    initHashTable();
-    printHashTable();
+    pHTInit();
+    pHTDisplay();
     printf("\n");
     person_t* person[10] = {NULL};
     person[0] = createPerson("Bob", 23);
@@ -128,15 +128,15 @@ int main(int argc, char** argv){
     person[2] = createPerson("joyce", 30);
     person[3] = createPerson("JohnCena", 45);
     person[4] = createPerson("Doctor", 256);
-    htInsert(person[0]);
-    htInsert(person[1]);
-    htInsert(person[2]);
-    htInsert(person[3]);
-    htInsert(person[4]);
-    printHashTable();
-    printf("Hash Table Printed  size: %lu\n", sizeof(*hashTableArray));
+    pHTInsert(person[0]);
+    pHTInsert(person[1]);
+    pHTInsert(person[2]);
+    pHTInsert(person[3]);
+    pHTInsert(person[4]);
+    pHTDisplay();
+    printf("Hash Table Printed  size: %lu\n", sizeof(personHTArray));
 
-    person_t* tmp = htSearchPerson("Bob");
+    person_t* tmp = pHTSearch("Bob");
     if (tmp==NULL){
         printf("Person Not Found\n");
     }
@@ -144,7 +144,7 @@ int main(int argc, char** argv){
         printf("Person Found: %s\n", tmp->name);
     }
 
-    tmp = htSearchPerson("Unknown");
+    tmp = pHTSearch("Unknown");
     if (tmp==NULL){
         printf("Person Not Found\n");
     }
@@ -155,13 +155,13 @@ int main(int argc, char** argv){
     int personSize = sizeof(person)/sizeof(person[0]);
     for(int i=0;i<personSize;i++){
         if (person[i] != NULL){
-            htDeletePerson(person[i]->name);
+            pHTDelete(person[i]->name);
         }
     }
     freePerson(&person[0]);
     freePersonArray(person, personSize);
     printf("Person Freed\n");
-    printHashTable();
+    pHTDisplay();
 
 
     intqueue_t* queue = intQInit();

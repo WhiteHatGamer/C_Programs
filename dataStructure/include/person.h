@@ -1,10 +1,10 @@
 #ifndef PERSON_H
 #define PERSON_H
 
-#define MAX_SIZE 256
+#define PHT_MAX_SIZE 256
 
 typedef struct Person{
-    char name[MAX_SIZE];
+    char name[PHT_MAX_SIZE];
     int age;
     //.. Add Others later
 }person_t;

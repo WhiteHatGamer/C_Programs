@@ -1,31 +1,30 @@
-#ifndef HASHTABLE_H
-#define HASHTABLE_H
+#ifndef PERSON_HASHTABLE_H
+#define PERSON_HASHTABLE_H
 
 #include <stdbool.h>
 #include "person.h"
 
-#define MAX_SIZE 256
-#define TABLE_SIZE 10
+#define PHASHTABLE_SIZE 10
 #define DELETED_NODE (person_t*)(0xFFFFFFFFFFFFFFFFUL)
 
-extern person_t* hashTableArray[TABLE_SIZE];
+extern person_t* personHTArray[PHASHTABLE_SIZE];
 
 // Hash Function
-unsigned int hash(char* _name);
+unsigned int pHTHash(char* _name);
 
 // Initialize every memory to NULL
-void initHashTable();
+void pHTInit();
 
 // Print Hash Table
-void printHashTable();
+void pHTDisplay();
 
-// Inset a person to hash Table
-bool htInsert(person_t* _person);
+// Inset a person to pHTHash Table
+bool pHTInsert(person_t* _person);
 
 // Find a person using Name
-person_t* htSearchPerson(char* _name);
+person_t* pHTSearch(char* _name);
 
 // Delete a person from the table array
-person_t* htDeletePerson(char* _name);
+person_t* pHTDelete(char* _name);
 
 #endif
